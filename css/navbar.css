@@ -77,3 +77,20 @@ body {
   .subnav-right:hover .subnav-content {
     display: block;
   }
+
+  .header{
+    position: relative;
+    left: 45%;
+  }
+
+  .row{
+    padding-left: 10px; 
+  }
+
+  .row img{
+    width: 30%;
+    padding: 20px;
+    width:  420px;
+    height: 420px;
+  }
+
