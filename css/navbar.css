@@ -78,39 +78,7 @@ body {
     display: block;
   }
 
-  .header{
-    position: relative;
-    left: 45%;
-  }
-
-  .row{
-    padding-left: 10px; 
-  }
-
-  .row img{
-    width: 30%;
-    padding: 20px;
-    width:  420px;
-    height: 420px;
-  }
-
-  .product-list{
-    
-  }
-
-  .product-list .product-cell{
-    width: 20%;
-    float: left;
-    text-align: center;
-  }
-
-  .product-list .product-cell img{
-    width:  100px;
-    height: 100px;
-  }
-  .product-list .product-cell a{
-    display: block;
-  }
+  
 
 
 
