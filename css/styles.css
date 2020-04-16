@@ -93,3 +93,46 @@
   from {opacity: .4}
   to {opacity: 1}
 }
+
+hr{
+  border-top: 5px solid black;
+}
+
+.section{
+  text-align: center;
+}
+
+#membersContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.glyphicon{
+  font-size: 3vw;
+}
+
+.memberPanel{
+  text-align: center;
+  margin: 5px;
+}
+
+.sectionTitle{
+  font-weight: bold;
+}
+
+.sectionDescription{
+  text-align: left;
+  font-size: 1.5vw;
+  text-indent: 40px;
+}
+
+.section li{
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 0;
+}
+
+.memberName{
+  font-weight: bold;
+}
