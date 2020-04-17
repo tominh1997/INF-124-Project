@@ -1,14 +1,19 @@
-.product-list .product-cell{
-  width: 20%;
-  float: left;
+.product-list {
   text-align: center;
 }
 
-.product-list .product-cell img{
-  width:  100px;
-  height: 100px;
+.product-list .product-cell{
+  float: left;
+  text-align: center;
+  margin-left: 45px;
+  margin-right: 45px;
 }
-.product-list .product-cell a{
+
+.product-list .product-cell img{
+  width:  125px;
+  height: 125px;
+}
+.product-list .product-cell span{
   display: block;
 }
 
