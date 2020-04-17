@@ -1,3 +1,7 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+  }
 
   .navbar {
     overflow: hidden;
@@ -60,6 +64,7 @@
     color: white;
     display: block;
     background-color: #333;
+    background-color: green;
     padding: 12px 16px;
     text-decoration: none;
     max-width: 80px;
@@ -67,17 +72,10 @@
   
   .subnav-content a:hover {
     background-color: white;
+    background-color: green;
     color: black;
   }
   
   .subnav-right:hover .subnav-content {
     display: block;
-  }
-
-
-
-
-
-
-
 
