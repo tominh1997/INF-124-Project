@@ -12,7 +12,7 @@ hr{
   align-items: center;
 }
 
-.glyphicon{
+.fa-book, .fa-star, .fa-certificate{
   font-size: 3vw;
 }
 
