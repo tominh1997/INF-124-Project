@@ -3,21 +3,20 @@
 <head>
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link rel="stylesheet" type="text/css" href="css/navbar.css">
+<link rel="stylesheet" href="css/navbar.css">
 <link rel="stylesheet" type="text/css" href="css/homePage.css">
-    
-<script defer src = "orderCheck.js"></script>
+<script src="js/myScript.js"></script>
 </head>
 <body>
-
 <div class="navbar">
-  <a href="#home">LOGO</a>
-  
+  <a href="#home"> 
+      <img src="img/logo/logo.png" alt="logo" style="width: 100px; height: 100px;">
+  </a>
   <div class="subnav-left">
-    <a href="#about">About Us</a>
+    <a href="homepage.html">Home</a>
   </div> 
   <div class="subnav">
-    <a href="#home">Home</a>
+    <a href="about-us.html">About Us</a>
   </div> 
   <div class="subnav-right">
     <button class="subnavbtn">Products <i class="fa fa-caret-down"></i></button>
@@ -28,8 +27,59 @@
     </div>
   </div>
 </div>
+<!-- Slideshow container -->
+<div class="slideshow-container">
+  	<!-- Slide 1: About Us -->
+  	<div id="slide1" class="mySlides fade">
+    	<img class="slideImage" src="images/about-us.jfif">
+		<div class="textContainer">
+			<h1 class="slidesHeading">About Us</h1>
+			<h3 class="slidesDescription">As ChocoHolics Chocolate Factory, our mission is to make the world both bitter and sweeter one person at a time 
+				by offering high quality chocolate boxes to our customers.
+			</h3>
+			<button class="slideButton"> Learn More </button>
+		</div>
+  	</div>
+  	<!-- Slide 2: White Chocolate -->
+  	<div class="mySlides fade">
+    	<img class="slideImage" src="images/white.png">
+		<div class="textContainer">
+			<h1 class="slidesHeading">Sweet Dreams That You Can't Resist</h1>
+			<h3 class="slidesDescription">Creamy, sweet and rich in flavor. Try out our white chocolates and fall in love with them in your dreams.</h3>
+			<button class="slideButton"> Learn More </button>
+		</div>
+  	</div>
+  	<!-- Slide 3: Dark Chocolate -->
+  	<div class="mySlides fade">
+    	<img class="slideImage" src="images/dark.jpg">
+		<div class="textContainer">
+			<h1 class="slidesHeading">Addicting Flavor That You Can't Stop</h1>
+			<h3 class="slidesDescription">Bitter, bold and rich in flavor. Try out our dark chocolates and you would wish you have bought more.</h3>
+			<button class="slideButton"> Learn More </button>
+		</div>
+  	</div>
+  	<!-- Slide 4: Milk Chocolate -->
+  	<div class="mySlides fade">
+    	<img class="slideImage" src="images/milk.jpg">
+		<div class="textContainer">
+			<h1 class="slidesHeading">Mixtures of Goodness That You Can't Have Enough</h1>
+			<h3 class="slidesDescription">Milky, sweet and smooth in flavor. Try out our milk chocolates and you can never have enough of them.</h3>
+			<button class="slideButton"> Learn More </button>
+		</div>
+  	</div>
 
-<hr>   
+</div>
+<br>
+
+<!-- Nagivational Control -->
+<div style="text-align:center">
+	<a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+	<span class="dot active" onclick="showSlide(1)"></span>
+	<span class="dot" onclick="showSlide(2)"></span>
+	<span class="dot" onclick="showSlide(3)"></span>
+	<span class="dot" onclick="showSlide(4)"></span>
+	<a class="next" onclick="plusSlides(1)">&#10095;</a>
+</div>
 <div class = "description"> 
     <div class = "description-img"> 
         <a href = "#choc"> <img src="chocimages/wc1.jpg"> </a>
@@ -73,6 +123,5 @@
 
 </div>
 <hr>
-
 </body>
 </html>
