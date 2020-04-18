@@ -1,6 +1,8 @@
 body {
-    font-family: Arial, Helvetica, sans-serif;
+    font-family: Courier;
     margin: 0;
+    background-color: #8A4E41; 
+    
   }
 
 .header{
@@ -8,6 +10,7 @@ body {
     height: 40px; 
     display: block; 
     background-color: #333; 
+   
   }
 
 .header h1{ 
@@ -32,6 +35,7 @@ body {
     padding: 1px;
     padding-right: 100px; 
     padding-left: 100px; 
+    color: whitesmoke; 
 }
 
 
@@ -50,6 +54,11 @@ hr {
     font-size: 30px; 
     padding-left: 20px; 
     margin: 0px; 
+    color: whitesmoke; 
+}
+
+.form h2, h3{ 
+    color: whitesmoke; 
 }
 
 .form hr{ 
@@ -57,8 +66,14 @@ hr {
 }
 
 .form-layout{ 
+    padding: 20px; 
     max-width: 700px; 
     margin: auto; 
+    border: 10px solid #333; 
+}
+
+.form-layout hr{ 
+    border: 3px solid #333;
 }
 
 .info-layout{ 
@@ -68,11 +83,12 @@ hr {
 .info-layout label{ 
     display: block; 
     padding: .5rem 0; 
+    color: whitesmoke; 
 }
 
 .info-layout input{
     display: block; 
-    width: 50%; 
+    width: 100%; 
     border: 1.5px solid #333; 
 }
 
@@ -86,6 +102,16 @@ hr {
     width: auto;
     text-transform: uppercase; 
     cursor: pointer; 
+    font-family: Courier; 
+    width: 100%; 
+}
+
+.radio-layout{ 
+
+}
+
+.radio-layout{ 
+    color: whitesmoke; 
 }
 
 
