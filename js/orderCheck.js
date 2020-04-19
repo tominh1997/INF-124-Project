@@ -33,53 +33,52 @@ function checkValidInputs(){
     const cvvVal = cvv.value.trim() 
     const expVal = exp.value 
     
+    let errorMsgs = []; 
+    
     if(!isNaN(productVal)){
-        alert("Please Enter a String not an Integer for Product Value"); 
-        return true; 
+        errorMsgs.push("Please Enter a String not an Integer for Product Value"); 
     }
     
     if(!isNaN(firstNameVal)){
-        alert("Please Enter a String not an Integer for First Name"); 
-        return true; 
+        errorMsgs.push("Please Enter a String not an Integer for First Name"); 
     }
     
     if(!isNaN(lastNameVal)){
-        alert("Please Enter a String not an Integer for Last Name"); 
-        return true; 
+        errorMsgs.push("Please Enter a String not an Integer for Last Name"); 
     }
     
     if (phoneVal.length > 10 || phoneVal.length < 10 || isNaN(phoneVal) ) { 
-        alert("Please Enter a Valid Phone Number"); 
-        return true; 
+        errorMsgs.push("Please Enter a Valid Phone Number");  
     }
     
     if(!isNaN(cityVal)){
-        alert("Please Enter a String not an Integer for City"); 
-        return true; 
+        errorMsgs.push("Please Enter a String not an Integer for City"); 
     }
     
     if(!isNaN(stateVal) ){
-        alert("Please Enter a String not an Integer for State"); 
-        return true; 
+        errorMsgs.push("Please Enter a String not an Integer for State"); 
     }
     
     if(!isNaN(countryVal)){
-        alert("Please Enter a String not an Integer for Country"); 
-        return true; 
+        errorMsgs.push("Please Enter a String not an Integer for Country"); 
     }
     
-    if (zipVal.length > 5 || zipVal.length < 5 || isNaN(zipVal)) { 
-        alert("Please Enter a Valid Zip Code"); 
-        return true; 
+    if (zipVal.length > 5 || zipVal.length < 5 || isNaN(zipVal)) {
+        errorMsgs.push("Please Enter a Valid Zip Code"); 
+
     }
     
     if (cardNumVal.length > 16 || cardNumVal.length < 16 || isNaN(cardNumVal)) { 
-        alert("Please Enter a Valid Credit Card Number"); 
-        return true; 
+        errorMsgs.push("Please Enter a Valid Credit Card Number"); 
+
     }
     
     if (cvvVal.length > 3 || cvvVal.length < 3 || isNaN(cvvVal)) { 
-        alert("Please Enter a Valid CVV"); 
+        errorMsgs.push("Please Enter a Valid CVV");  
+    }
+    
+    if(errorMsgs.length > 0){ 
+        alert(errorMsgs.join(", ")); 
         return true; 
     }
 
