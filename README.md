@@ -1,6 +1,6 @@
 # INF-124-Project 1
 
-URL Address: http://circinus-2.ics.uci.edu:8080/project1/homepage.html
+URL Address: http://circinus-5.ics.uci.edu:8080/project1/homepage.html
 
 Group: Minh To (79292595), Huy Duc Vo (17903562), Kuljit Singh (73652462)
 E-commerce Business: Chocolate Factory (Chocoholics) #selling various types of chocolates
