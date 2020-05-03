@@ -17,7 +17,7 @@ $stmt->execute(array(':buyer_name' => $_POST["firstName"],
                      ':credit_card_number' => $_POST["cardnum"],
                      ':CVV' => $_POST["cvv"],
                     ));          
-print_r($_POST);         
-//header("Location: http://".$_SERVER['HTTP_HOST']."/confirmation.html?buyer_name=".$_POST["firstName"]."&total_amount=".$total_amount);
-//exit(0); 
+//print_r($_POST);         
+header("Location: http://".$_SERVER['HTTP_HOST']."/confirmation.html?buyer_name=".$_POST["firstName"]."&total_amount=".$total_amount);
+exit(0); 
 ?>
