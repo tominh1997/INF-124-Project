@@ -22,6 +22,8 @@ function getPlace (zip)
         document.getElementById ("city").value = place[0];
       if (document.getElementById ("state").value == "")
         document.getElementById ("state").value = place[1];
+      if (document.getElementById ("country").value == "")
+        document.getElementById ("country").value = place[2];
     }
   }
   // Call the response software component

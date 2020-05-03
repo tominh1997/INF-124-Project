@@ -5,9 +5,11 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link rel="stylesheet" type="text/css" href="css/navbar.css">
 <link rel="stylesheet" type="text/css" href="css/description.css">
-    
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>  
 <script defer src = "js/orderCheck.js"></script>
 <script type = "text/JavaScript" src = "js/auto_fill_zip_code.js"></script>
+<script type = "text/JavaScript" src="js/form.js"></script>
+
 <meta charset="UTF-8">
 </head>
 <body>
@@ -16,7 +18,7 @@
     <h1> Order Information </h1>
     <hr> 
     <div id = "error"> </div>
-    <form action = "" method = "GET" id = "form" class = "form-layout">
+    <form action = "php/order_form.php" method = "POST" id = "form" class = "form-layout">
       
         <h2> Product </h2>
         <div class = "info-layout"> 
@@ -61,20 +63,20 @@
             <input type = "text" name = "country" id = "country" required>
       
             <label for = "zipCode"> Zip Code </label>
-            <input type = "text" name = "zipCode" id = "zip" required onblur = "getPlace (this.value)">
+            <input type = "text" name = "zipCode" id = "zip" required onblur = "getPlace (this.value)" autocomplete="on">
 
         </div>
             
         
         <h3> Shipping Method </h3>
         <div> 
-            <input type = "radio" name = "shipping method" id = "one-day" value = "one-day" required>
+            <input type = "radio" name = "shipping method" id = "one-day" value = "1" required>
             <label for = "one-day"> One-Day Shipping  </label>
             
-            <input type = "radio" name = "shipping method" id = "two-day" value = "two-day" required>
+            <input type = "radio" name = "shipping method" id = "two-day" value = "2" required>
             <label for = "two-day"> Two-Day Shipping  </label>
             
-            <input type = "radio" name = "shipping method" id = "standard" value = "standard" required>
+            <input type = "radio" name = "shipping method" id = "standard" value = "0" required>
             <label for = "standard"> Standard (4 - 5 business days) </label>
             
         </div>

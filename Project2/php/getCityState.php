@@ -9,9 +9,9 @@ $stmt = $pdo->prepare($sql);
 $stmt->execute(array(':zip' => $_GET["zip"]));
 
 $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
+$row["country"] = "United States";
 if (isset($row))
-  print $row["city"].", ".$row["state"];
+  print $row["city"].", ".$row["state"].", ".$row["country"];
 else
   print " , ";
 
