@@ -73,7 +73,7 @@
 
 <hr>
 <div class="header">
-<span ><?php echo $_GET["type"]. "Chocolate Products" ?></span>
+<span ><?php echo ucfirst($_GET["type"]). " Chocolate Products" ?></span>
 </div>
 
 <table style="width:100%; padding-left: 30px;">
