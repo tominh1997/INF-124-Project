@@ -8,7 +8,11 @@
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $query = 'SELECT * FROM chocoholic_db.products WHERE type = ?';
-        $type = $_GET['type'];
+        if (!isset($_GET['type'])){
+          $type = "white";
+        } else {
+          $type = $_GET['type'];
+        }
         $stmt = $conn->prepare($query);
         $stmt->execute([$type]);
         //fetch all in array format: array ( 0 => array (""))
@@ -64,7 +68,7 @@
     <span class="header">Best Seller</span>
     <div class="row">
         <?php for ($i = 0; $i <= 2; $i++){ ?>
-        <a href="<?php echo "productDescription.php?". "type=" . $_GET["type"] . "&product=" . $result[$i]['name'] ?>">
+        <a href="<?php echo "productDescription.php?type=" . $type . "&product=" . $result[$i]['name'] ?>">
             <?php echo '<img src="data:image/jpg;base64,'.base64_encode( $result[$i]['image1'] ).'"/>'; ?>
         </a>
         <?php } ?>
@@ -73,7 +77,7 @@
 
 <hr>
 <div class="header">
-<span ><?php echo ucfirst($_GET["type"]). " Chocolate Products" ?></span>
+<span ><?php echo ucfirst($type). " Chocolate Products" ?></span>
 </div>
 
 <table style="width:100%; padding-left: 30px;">
@@ -87,8 +91,8 @@
         $cur = $result[$c + $columns * $r] ?>
         <td >
             <div class = "product-cell">
-                <a href="productDescription.php">
-                    <?php echo '<img href="productDescription.php" src="data:image/jpg;base64,'.base64_encode($cur['image1'] ).'"/>'; ?> 
+                <a href="<?php echo "productDescription.php?type=" . $type . "&product=" . $cur['name'] ?>">
+                    <?php echo '<img src="data:image/jpg;base64,'.base64_encode($cur['image1'] ).'"/>'; ?> 
                     <span>
                     <?php echo $cur['name'] ?>
                     </span>

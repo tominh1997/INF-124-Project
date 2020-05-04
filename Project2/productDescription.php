@@ -8,9 +8,15 @@
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $query = 'SELECT * FROM chocoholic_db.products WHERE type = ? and name = ?';
-        $type = $_GET["type"];
-        $name = $_GET["product"];
+        if (!isset($_GET['type'])){
+            $type ="white";
+            $name ="Hebert";
+        } else {
+            $type = $_GET["type"];
+            $name = $_GET["product"];
+        }
         $stmt = $conn->prepare($query);
+        echo $name;
         $stmt->execute([$type, $name]);
         //fetch all in array format: array ( 0 => array (""))
         /*
