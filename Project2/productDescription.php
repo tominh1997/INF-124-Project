@@ -7,10 +7,11 @@
     try {
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        $query = 'SELECT * FROM chocoholic_db.products WHERE type = ?';
-        $type = "dark";
+        $query = 'SELECT * FROM chocoholic_db.products WHERE type = ? and name = ?';
+        $type = $_GET["type"];
+        $name = $_GET["product"];
         $stmt = $conn->prepare($query);
-        $stmt->execute([$type]);
+        $stmt->execute([$type, $name]);
         //fetch all in array format: array ( 0 => array (""))
         /*
         array (
@@ -19,13 +20,12 @@
           2 => array('Mary'),
           3 => array('Kathy'),
         )*/
-        $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+        $result = $stmt->fetch(PDO::FETCH_ASSOC);
     }
     catch(PDOException $e) {
         echo "Error: " . $e->getMessage();
     }
     $conn = null;
-    echo $_GET["product"];
 ?>
 
 <!DOCTYPE html>
@@ -62,20 +62,20 @@
 
     
 <div class = "header">
-    <h1> Insert Chocolate Name</h1>   
+    <h1> <?php echo $result["name"] ?> </h1> 
 </div>
     
 <div class="description">
     
     <center> 
-    <img src="MCImg/mc1.jpg"> 
-    <img src="MCImg/mc1.jpg"> 
-    <img src="MCImg/mc1.jpg"> 
+    <?php echo '<img src="data:image/jpg;base64,'.base64_encode( $result['image1'] ).'"/>'; ?> 
+    <?php echo '<img src="data:image/jpg;base64,'.base64_encode( $result['image2'] ).'"/>'; ?> 
+    <?php echo '<img src="data:image/jpg;base64,'.base64_encode( $result['image3'] ).'"/>'; ?> 
     </center>
     
     <p>
-        <strong> $Price </strong> <br> 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        <strong> <?php echo "$" . $result['price'] ?>   </strong> <br> 
+        <?php echo $result["description"] ?>  
         
     </p>   
 </div>   

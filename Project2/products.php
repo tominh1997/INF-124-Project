@@ -64,7 +64,7 @@
     <span class="header">Best Seller</span>
     <div class="row">
         <?php for ($i = 0; $i <= 2; $i++){ ?>
-        <a href="<?php echo "productDescription.php?product=" . $result[$i]['name'] ?>">
+        <a href="<?php echo "productDescription.php?". "type=" . $_GET["type"] . "&product=" . $result[$i]['name'] ?>">
             <?php echo '<img src="data:image/jpg;base64,'.base64_encode( $result[$i]['image1'] ).'"/>'; ?>
         </a>
         <?php } ?>
