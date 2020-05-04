@@ -53,7 +53,7 @@
   <div class="subnav-right">
     <button class="subnavbtn">Products <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-        <a href="products.php?type=white"> White Chocolate</a>
+    <a href="products.php?type=white"> White Chocolate</a>
       <a href="products.php?type=dark">Dark Chocolate</a>
       <a href="products.php?type=milk">Milk Chocolate</a>
     </div>
