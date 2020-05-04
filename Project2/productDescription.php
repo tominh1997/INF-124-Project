@@ -1,5 +1,5 @@
 <?php
-    $servername = "localhost";
+    $servername = "localhost:3306";
     $username = "root";
     $password = "";
     $dbname = "chocoholic_db";
@@ -36,7 +36,9 @@
 <link rel="stylesheet" type="text/css" href="css/navbar.css">
 <link rel="stylesheet" type="text/css" href="css/description.css">
     
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.7.1.min.js"></script>  
 <script defer src = "js/orderCheck.js"></script>
+<script type = "text/JavaScript" src = "js/auto_fill_zip_code.js"></script>
 </head>
 <body>
 
@@ -86,73 +88,71 @@
     <h1> Order Information </h1>
     <hr> 
     <div id = "error"> </div>
-    <form action = "mailto:inf124@uci.edu" method = "post" enctype="text/plain" id = "form" class = "form-layout">
+    <form action = "php/order_form.php" method = "POST" id = "form" class = "form-layout">
       
         <h2> Product </h2>
         <div class = "info-layout"> 
             
-            <label for = "product"> Chocolate Type </label>
-            <input type = "text" name = "product" id = "product"  min = "1" step = "1"  placeholder= "Chocolate Name" required>
+            <label for = "product"> Chocolate </label>
+            <input readonly type = "text" name = "product" id = "product">
+            <script type = "text/JavaScript" src="js/form.js"></script>
             
             <label for = "quantity"> Quantity </label>
             <input type = "number" name = "quantity" id = "quantity"  min = "1" step = "1" required>
         
         </div>  
-        <hr> 
+        
         <h2> User Information </h2>
        
         <div class = "info-layout"> 
-            <label for = "firstName"> First Name </label>
-            <input type = "text" name = "firstName" id = "firstName" placeholder="First Name" required>
-
-            <label for = "lastName"> Last Name </label>
-            <input type = "text" name = "lastName" id = "lastName" placeholder="Last Name" required>
+            <label for = "name"> Name </label>
+            <input type = "text" name = "name" id = "name" placeholder="name" required>
        
             <label for = "phone"> Phone Number </label>
             <input type = "tel" name = "phone" id = "phone" placeholder="##########" required>
        
         </div>
-        <hr>
+        
         <h2> Shipping Address </h2>  
         <div class = "info-layout"> 
-            <label for = "address"> Address </label>
-            <input type = "text" name = "address" id = "address" placeholder = "Street Address" required>
+            <label for = "adrress"> Address </label>
+            <input type = "text" name = "adrress" id = "adrress" placeholder = "street address" required>
 
         
             <label for = "city"> City </label>
-            <input type = "text" name = "city" id = "city" placeholder= "City" required >
+            <input type = "text" name = "city" id = "city" required >
 
        
             <label for = "state"> State </label>
-            <input type = "text" name = "state" id = "state" placeholder= "State" required>
+            <input type = "text" name = "state" id = "state" required>
 
         
             <label for = "country"> Country </label>
-            <input type = "text" name = "country" id = "country" placeholder= "Country" required>
+            <input type = "text" name = "country" id = "country" required>
       
             <label for = "zipCode"> Zip Code </label>
-            <input type = "text" name = "zipCode" id = "zip" required>
+            <input type = "text" name = "zipCode" id = "zip" required onblur = "getPlace (this.value)" autocomplete="on">
 
         </div>
             
         
         <h3> Shipping Method </h3>
-        <div class = "radio-layout"> 
-            <input type = "radio" name = "shipping method" id = "one-day" value = "one-day" required>
+        <div> 
+            <input type = "radio" name = "shipping method" id = "one-day" value = "1" required>
             <label for = "one-day"> One-Day Shipping  </label>
             
-            <input type = "radio" name = "shipping method" id = "two-day" value = "two-day" required>
+            <input type = "radio" name = "shipping method" id = "two-day" value = "2" required>
             <label for = "two-day"> Two-Day Shipping  </label>
             
-            <input type = "radio" name = "shipping method" id = "standard" value = "standard" required>
+            <input type = "radio" name = "shipping method" id = "standard" value = "0" required>
             <label for = "standard"> Standard (4 - 5 business days) </label>
             
         </div>
-        <hr>
+        
         <h2> Credit Card </h2>  
     
         <h3> Payment Method </h3>
-        <div class = "radio-layout"> 
+        <div> 
             <input type = "radio" name = "payment method" id = "visa" value = "Visa" required>
             <label for = "visa"> Visa  </label>
 
@@ -181,8 +181,8 @@
         </div>
         
         <div class = "info-layout"> 
-            <label for = "exp"> Expiration Date </label>
-            <input type = "month" name = "exp" id = "exp"  required>
+            <label for = "exp"> Expiration </label>
+            <input type = "month" name = "exp" id = "exp" required>
         </div>
      
         <button type = "submit" id = "order"> Place Order </button>

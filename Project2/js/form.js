@@ -1,21 +1,13 @@
-let order_form = $("#form");
-
-function submitForm(formSubmitEvent) {
-    console.log("submit form");
-    /**
-     * When users click the submit button, the browser will not direct
-     * users to the url defined in HTML form. Instead, it will call this
-     * event handler when the event is triggered.
-     */
-    formSubmitEvent.preventDefault();
-
-    $.ajax(
-        "php/order_form.php", {
-            method: "POST",
-            // Serialize the login form to the data sent by POST request
-            data: order_form.serialize(),
-            success: handleResult
-        }
-    );
-}
-//order_form.submit(submitForm);
+function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split("&");
+    for (var i=0;i<vars.length;i++) {
+      var pair = vars[i].split("=");
+      if (pair[0] == variable) {
+        return pair[1];
+      }
+    } 
+    alert('Query Variable ' + variable + ' not found');
+  }
+var product_name = getQueryVariable('product');  
+document.getElementById ("product").value = product_name.replace(/%20/g, " ");

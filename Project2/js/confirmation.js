@@ -12,5 +12,5 @@ function getQueryVariable(variable) {
 
 var name = getQueryVariable('buyer_name');
 var total = getQueryVariable('total_amount');
-$("#name").text(name);
-$("#total").text(total);
+$("#name").text("Thank you " + name);
+$("#total").text("Your total order is " + total + " has been placed");

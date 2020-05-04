@@ -6,9 +6,9 @@ $sql ="INSERT INTO orders VALUES(NULL, :buyer_name, :phone_number,
                  ) ";
 $stmt = $pdo->prepare($sql);
 $total_amount = 99*$_POST["quantity"];
-$stmt->execute(array(':buyer_name' => $_POST["firstName"], 
+$stmt->execute(array(':buyer_name' => $_POST["name"], 
                      ':phone_number' => $_POST["phone"],
-                     ':product_id' => 1,
+                     ':product_id' => 9,
                      ':product_name' => $_POST["product"],
                      ':quantity' => $_POST["quantity"],
                      ':total_amount' => $total_amount,
@@ -18,6 +18,6 @@ $stmt->execute(array(':buyer_name' => $_POST["firstName"],
                      ':CVV' => $_POST["cvv"],
                     ));          
 //print_r($_POST);         
-header("Location: http://".$_SERVER['HTTP_HOST']."/confirmation.html?buyer_name=".$_POST["firstName"]."&total_amount=".$total_amount);
+header("Location: http://".$_SERVER['HTTP_HOST']."/confirmation.html?buyer_name=".$_POST["name"]."&total_amount=".$total_amount);
 exit(0); 
 ?>
