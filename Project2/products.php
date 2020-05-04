@@ -55,7 +55,7 @@
     <div class="subnav-content">
       <a href="products.php?type=white"> White Chocolate</a>
       <a href="products.php?type=dark">Dark Chocolate</a>
-      <a href="milk-chocolate.php?type=milk">Milk Chocolate</a>
+      <a href="products.php?type=milk">Milk Chocolate</a>
     </div>
   </div>
 </div>
