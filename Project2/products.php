@@ -8,7 +8,7 @@
         $conn = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
         $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         $query = 'SELECT * FROM chocoholic_db.products WHERE type = ?';
-        $type = "dark";
+        $type = $_GET['type'];
         $stmt = $conn->prepare($query);
         $stmt->execute([$type]);
         //fetch all in array format: array ( 0 => array (""))
@@ -53,9 +53,9 @@
   <div class="subnav-right">
     <button class="subnavbtn">Products <i class="fa fa-caret-down"></i></button>
     <div class="subnav-content">
-      <a href="white-chocolate.php">White Chocolate</a>
-      <a href="dark-chocolate.php">Dark Chocolate</a>
-      <a href="milk-chocolate.php">Milk Chocolate</a>
+      <a href="products.php?type=white"> White Chocolate</a>
+      <a href="products.php?type=dark">Dark Chocolate</a>
+      <a href="milk-chocolate.php?type=milk">Milk Chocolate</a>
     </div>
   </div>
 </div>
@@ -64,7 +64,7 @@
     <span class="header">Best Seller</span>
     <div class="row">
         <?php for ($i = 0; $i <= 2; $i++){ ?>
-        <a href="productDescription.php">
+        <a href="<?php echo "productDescription.php?product=" . $result[$i]['name'] ?>">
             <?php echo '<img src="data:image/jpg;base64,'.base64_encode( $result[$i]['image1'] ).'"/>'; ?>
         </a>
         <?php } ?>
@@ -73,7 +73,7 @@
 
 <hr>
 <div class="header">
-<span >Dark Chocolate Products</span>
+<span ><?php echo $_GET["type"]. "Chocolate Products" ?></span>
 </div>
 
 <table style="width:100%; padding-left: 30px;">
