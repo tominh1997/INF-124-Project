@@ -7,10 +7,27 @@ function getQueryVariable(variable) {
         return pair[1];
       }
     } 
-    alert('Query Variable ' + variable + ' not found');
+    //alert('Query Variable ' + variable + ' not found');
   }
 
-var name = getQueryVariable('buyer_name');
-var total = getQueryVariable('total_amount');
-$("#name").text("Thank you " + name);
-$("#total").text("Your total order is " + total + " has been placed");
+var order_number = getQueryVariable('order_number');
+var name = getQueryVariable('name');
+var product = getQueryVariable('product');
+var quantity = getQueryVariable('quantity');
+var item_subtotal = getQueryVariable('item_subtotal');
+var shipping = getQueryVariable('shipping');
+var total_before_tax = getQueryVariable('total_before_tax');
+var tax = getQueryVariable('tax');
+var grand_total = getQueryVariable('grand_total');
+
+
+$("#order_number").text(order_number);
+$("#name").text(name.replace(/%20/g, " "));
+$("#product").text(product.replace(/%20/g, " "));
+$("#quantity").text(quantity);
+$("#item_subtotal").text("$" + item_subtotal);
+$("#shipping").text("$" + shipping);
+$("#total_before_tax").text("$" + total_before_tax);
+$("#tax").text(tax + "%");
+$("#grand_total").text("$" + grand_total);
+

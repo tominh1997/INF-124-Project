@@ -103,6 +103,9 @@
             <input readonly type = "text" name = "product" id = "product">
             <script type = "text/JavaScript" src="js/form.js"></script>
             
+            <label for = "product_price"> Price </label>
+            <input readonly type = "text" name = "product_price" id = "product_price" value= <?php echo $result['price'] ?>>
+
             <label for = "quantity"> Quantity </label>
             <input type = "number" name = "quantity" id = "quantity"  min = "1" step = "1" required>
         
@@ -139,6 +142,8 @@
             <label for = "zipCode"> Zip Code </label>
             <input type = "text" name = "zipCode" id = "zip" required onblur = "getPlace (this.value)" autocomplete="on">
 
+            <label for = "tax"> Tax </label>
+            <input readonly type = "text" name = "tax" id = "tax" required>
         </div>
             
         
