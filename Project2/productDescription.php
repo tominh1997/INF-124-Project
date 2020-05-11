@@ -16,7 +16,6 @@
             $name = $_GET["product"];
         }
         $stmt = $conn->prepare($query);
-        echo $name;
         $stmt->execute([$type, $name]);
         //fetch all in array format: array ( 0 => array (""))
         /*
