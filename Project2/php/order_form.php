@@ -1,5 +1,16 @@
 <?php
 $pdo=new PDO('mysql:host=localhost:3306;dbname=chocoholic_db','root', '');
+$sqlCheck = "SELECT * FROM zip_codes WHERE zip_codes.city = :city AND zip_codes.state = :state AND zip_codes.zip = :zip ; ";
+$stmtCheck = $pdo->prepare($sqlCheck);
+$stmtCheck->execute(array(':city' => $_POST["city"],
+                ':state' => $_POST["state"],
+                ':zip' => $_POST["zipCode"]));
+$resultCheck = $stmtCheck->fetch(PDO::FETCH_ASSOC);     
+if(empty($resultCheck)){
+    echo "Wrong information";
+    exit(0);
+}
+
 $sql ="INSERT INTO orders VALUES(NULL, :buyer_name, :phone_number,
                  :product_id, :product_name, :quantity, :total_amount,
                  :address, :shipping_method, :credit_card_number, :CVV 
