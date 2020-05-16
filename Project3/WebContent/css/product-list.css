@@ -1,0 +1,23 @@
+.product-list {
+  text-align: center;
+  font-family: Courier;
+}
+
+.product-list .product-cell{
+  float: left;
+  text-align: center;
+  margin-left: 45px;
+  margin-right: 45px;
+}
+
+.product-list .product-cell img{
+  width:  125px;
+  height: 125px;
+}
+.product-list .product-cell span{
+  display: block;
+}
+
+.product-list .product-cell img:hover {
+    transform: scale(1.1); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  }
