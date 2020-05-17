@@ -31,15 +31,23 @@ public class AddCartServlet extends HttpServlet {
 
             ArrayList<Item> cart = (ArrayList<Item>)session.getAttribute("cart");
             if(cart == null) {
-                session.setAttribute("cart", new LinkedList<>() );
+                session.setAttribute("cart", new ArrayList<>() );
                 cart = (ArrayList<Item>) session.getAttribute("cart");
             }
 
             cart.add(new Item(name,id,price));
-            System.out.println(cart);
-            
-        }catch(Exception e){
+            System.out.println(cart.toString());
+            jsonObject.addProperty("status", 200);
+            out.write(jsonObject.toString());
 
+        }catch(Exception e){
+            // write error message JSON object to output
+            jsonObject.addProperty("message", e.getMessage());
+            out.write(jsonObject.toString());
+            e.printStackTrace();
+            // set reponse status to 500 (Internal Server Error)
+            response.setStatus(500);
         }
+        out.close();
     }
 }
