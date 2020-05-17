@@ -41,7 +41,7 @@ public class RecentVisitServlet extends HttpServlet  {
 
             jsonObject.addProperty("items-history", g.toJson(hm.values()));
             out.write(jsonObject.toString().replace("\\", "").replace("\"[{", "[{").replace("}]\"", "}]"));
-
+            response.setStatus(200);
         }catch (Exception e){
             // write error message JSON object to output
             jsonObject.addProperty("message", e.getMessage());

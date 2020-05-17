@@ -9,16 +9,18 @@ public class Item {
     Blob image1;
     Blob image2;
     Blob image3;
+    String quantity;
 
     public Item(String name, String id){
         this.name = name;
         this.id = id;
     }
 
-    public Item(String name, String id, String price){
+    public Item(String name, String id, String price, String quantity){
         this.name = name;
         this.id = id;
         this.price = price;
+        this.quantity = quantity;
     }
 
     public String getId() {
@@ -83,5 +85,13 @@ public class Item {
 
     public void setImage3(Blob image3) {
         this.image3 = image3;
+    }
+
+    public String getQuantity() {
+        return quantity;
+    }
+
+    public void setQuantity(String quantity) {
+        this.quantity = quantity;
     }
 }
