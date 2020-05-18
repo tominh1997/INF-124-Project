@@ -1,18 +1,20 @@
-package WebContent;
+package src;
 
-import WebContent.DBConnection;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import src.DBConnection;
+
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-@WebServlet("")
+@WebServlet(name="WhiteProductsServlet", urlPatterns = "/homepage")
 public class WhiteProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 2L;
 
@@ -22,7 +24,9 @@ public class WhiteProductsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
+		System.out.println("Running Servlet...............");
 		String type = "white";
+		request.setAttribute("test", "hello");
 		try {
 			// Get a connection from dataSource
 			Connection dbcon = DBConnection.initializeDatabase();
@@ -56,9 +60,10 @@ public class WhiteProductsServlet extends HttpServlet {
 			statement.close();
 			dbcon.close();
 			request.setAttribute("whiteProducts", whiteProducts);
-			request.getRequestDispatcher("homepage.jsp").forward(request, response);
+			request.getRequestDispatcher("/homepage.jsp").forward(request, response);
 		} catch (Exception e) {
 			// set reponse status to 500 (Internal Server Error)
+			System.out.println("Exeception Raised");
 			response.setStatus(500);
 		}
 	}

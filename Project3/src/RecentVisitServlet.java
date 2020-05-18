@@ -1,4 +1,4 @@
-package WebContent;
+package src;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -11,12 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 
-@WebServlet(name = "ConfirmationServlet", urlPatterns = "/api/confirmation")
-public class ConfirmationServlet extends HttpServlet {
+
+@WebServlet(name = "RecentVisitServlet", urlPatterns = "/api/recent-visit")
+public class RecentVisitServlet extends HttpServlet  {
     private static final long serialVersionUID = 2L;
 
     @SuppressWarnings("unchecked")
@@ -27,17 +26,24 @@ public class ConfirmationServlet extends HttpServlet {
         PrintWriter out = response.getWriter();
         try{
             Gson g = new Gson();
+
             HttpSession session = request.getSession();
-            HashMap<String,String> user = (HashMap<String, String>) session.getAttribute("user");
-            ArrayList<Item> cart = (ArrayList<Item>)session.getAttribute("cart");
+            System.out.println(session.getId());
+            Queue<Item> history = (Queue<Item>)session.getAttribute("items-history");
+            if(history == null) {
+                session.setAttribute("items-history", new LinkedList<>() );
+                history = (Queue<Item>) session.getAttribute("items-history");
+            }
+            history.add(new Item("white chocolate","1"));
+            history.add(new Item("dark chocolate","2"));
 
-            jsonObject.addProperty("items", g.toJson(cart));
-            jsonObject.addProperty("user", g.toJson(user.values()));
+            Map<String, Item> hm = new HashMap<>();
+            for(Item i : history){
+                hm.put(i.getId(), i);
+            }
 
-
+            jsonObject.addProperty("items-history", g.toJson(hm.values()));
             out.write(jsonObject.toString().replace("\\", "").replace("\"[{", "[{").replace("}]\"", "}]"));
-
-
             response.setStatus(200);
         }catch (Exception e){
             // write error message JSON object to output
@@ -47,12 +53,8 @@ public class ConfirmationServlet extends HttpServlet {
             // set reponse status to 500 (Internal Server Error)
             response.setStatus(500);
         }
+        out.close();
 
-
-    }
-
-    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
-        doGet(request,response);
     }
 
 }

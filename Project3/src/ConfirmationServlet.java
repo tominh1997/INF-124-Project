@@ -1,5 +1,6 @@
-package WebContent;
+package src;
 
+import com.google.gson.Gson;
 import com.google.gson.JsonObject;
 
 import javax.servlet.ServletException;
@@ -11,41 +12,34 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.HashMap;
+import java.util.Map;
 
-@WebServlet(name = "AddCartServlet", urlPatterns = "/api/add-cart")
-public class AddCartServlet extends HttpServlet {
+@WebServlet(name = "ConfirmationServlet", urlPatterns = "/api/confirmation")
+public class ConfirmationServlet extends HttpServlet {
     private static final long serialVersionUID = 2L;
+
     @SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json"); // Response mime type
         JsonObject jsonObject = new JsonObject();
         PrintWriter out = response.getWriter();
-
-        String id = request.getParameter("id");
-        String name = request.getParameter("name");
-        String price = request.getParameter("price");
-        String quantity = request.getParameter("quantity");
-
         try{
+            Gson g = new Gson();
             HttpSession session = request.getSession();
-            System.out.println(session.getId());
-
+            HashMap<String,String> user = (HashMap<String, String>) session.getAttribute("user");
             ArrayList<Item> cart = (ArrayList<Item>)session.getAttribute("cart");
-            if(cart == null) {
-                session.setAttribute("cart", new ArrayList<>() );
-                cart = (ArrayList<Item>) session.getAttribute("cart");
-            }
 
-            cart.add(new Item(name,id,price,quantity));
-            System.out.println(cart.toString());
-            jsonObject.addProperty("status", 200);
-            out.write(jsonObject.toString());
+            jsonObject.addProperty("items", g.toJson(cart));
+            jsonObject.addProperty("user", g.toJson(user.values()));
+
+
+            out.write(jsonObject.toString().replace("\\", "").replace("\"[{", "[{").replace("}]\"", "}]"));
+
+
             response.setStatus(200);
-
-        }catch(Exception e){
+        }catch (Exception e){
             // write error message JSON object to output
             jsonObject.addProperty("message", e.getMessage());
             out.write(jsonObject.toString());
@@ -53,6 +47,12 @@ public class AddCartServlet extends HttpServlet {
             // set reponse status to 500 (Internal Server Error)
             response.setStatus(500);
         }
-        out.close();
+
+
     }
+
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
+        doGet(request,response);
+    }
+
 }

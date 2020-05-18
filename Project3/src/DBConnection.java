@@ -1,4 +1,4 @@
-package WebContent;
+package src;
 
 import java.sql.Connection; 
 import java.sql.DriverManager; 
@@ -12,7 +12,7 @@ public class DBConnection {
         // Initialize all the information regarding 
         // Database Connection 
         String dbDriver = "com.mysql.jdbc.Driver"; 
-        String dbURL = "jdbc:mysql:// localhost:3306/"; 
+        String dbURL = "jdbc:mysql://localhost:3306/"; 
         // Database name to access 
         String dbName = "chocoholic_db"; 
         String dbUsername = "root"; 
