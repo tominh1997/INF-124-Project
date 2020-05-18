@@ -5,7 +5,7 @@
     <artifactId>chocoholic</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>war</packaging>
-
+	
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
@@ -13,6 +13,11 @@
             <version>3.8.1</version>
             <scope>test</scope>
         </dependency>
+        <dependency>
+		    <groupId>jstl</groupId>
+		    <artifactId>jstl</artifactId>
+		    <version>1.2</version>
+		</dependency>
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>

@@ -1,4 +1,4 @@
-package src;
+package WebContent;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
@@ -19,7 +19,8 @@ import java.util.Map;
 public class ConfirmationServlet extends HttpServlet {
     private static final long serialVersionUID = 2L;
 
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+    @SuppressWarnings("unchecked")
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("application/json"); // Response mime type
         JsonObject jsonObject = new JsonObject();

@@ -1,3 +1,6 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -14,7 +17,7 @@
       <img src="images/logo/logo.png" alt="logo" style="width: 100px; height: 100px;">
   </a>
   <div class="subnav-left">
-    <a href="homepage.html">Home</a>
+    <a href="homepage.jsp">Home</a>
   </div> 
   <div class="subnav">
     <a href="about-us.html">About Us</a>
@@ -101,17 +104,19 @@
       </div>
     </div>
     </div>
-    <!-- Nagivational Control -->
-  
 </div>
 <br>
 
-<div class = "recent-visit">
-    <table id=recent-visit-table class="table table-striped">
-        <a>Recent Visit</a>
-        <tbody id=table_body></tbody>
-    </table>
-</div>
+<div> ${test} </div>
+<table>
+    <c:forEach items="${whiteProducts}" var="product">
+        <tr>
+            <td>${product.name}</td>
+            <td>${product.type}</td>
+            <td>${product.price}</td>
+        </tr>
+    </c:forEach>
+</table>
 
 <div class = "description"> 
     <div class = "description-img"> 

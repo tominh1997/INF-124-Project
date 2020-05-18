@@ -1,10 +1,12 @@
+package WebContent;
+
 import java.sql.Blob;
 
 public class Item {
     String id;
     String name;
     String description;
-    String price;
+    double price;
     String type;
     Blob image1;
     Blob image2;
@@ -16,14 +18,17 @@ public class Item {
         this.id = id;
     }
 
-    public Item(String name, String id, String price, String quantity){
+    public Item(String name, String id, double price, String quantity){
         this.name = name;
         this.id = id;
         this.price = price;
         this.quantity = quantity;
     }
 
-    public String getId() {
+    public Item() {
+	}
+
+	public String getId() {
         return id;
     }
 
@@ -47,12 +52,12 @@ public class Item {
         this.description = description;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
-    public void setPrice(String price) {
-        this.price = price;
+    public void setPrice(double d) {
+        this.price = d;
     }
 
     public String getType() {
