@@ -1,4 +1,4 @@
-package src;
+
 
 import com.google.gson.JsonObject;
 
@@ -26,8 +26,8 @@ public class AddCartServlet extends HttpServlet {
 
         String id = request.getParameter("id");
         String name = request.getParameter("name");
-        String price = request.getParameter("price");
         String quantity = request.getParameter("quantity");
+        double price = 0;
 
         try{
             HttpSession session = request.getSession();
@@ -39,7 +39,7 @@ public class AddCartServlet extends HttpServlet {
                 cart = (ArrayList<Item>) session.getAttribute("cart");
             }
 
-            cart.add(new Item(name,id,price,quantity));
+            cart.add(new Item(name,id, price,quantity));
             System.out.println(cart.toString());
             jsonObject.addProperty("status", 200);
             out.write(jsonObject.toString());

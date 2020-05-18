@@ -1,5 +1,3 @@
-package src;
-
 import java.sql.Blob;
 
 public class Item {

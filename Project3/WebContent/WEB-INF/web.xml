@@ -6,7 +6,7 @@
     <display-name>chocoholic</display-name>
     <!-- Register the DataSource which defined in META-INF/context.xml-->
 	<welcome-file-list>
-		<welcome-file>homepage</welcome-file>
+		<welcome-file>homepage.jsp</welcome-file>
 	</welcome-file-list>
     <resource-ref>
         <description>MySQL DataSource example</description>

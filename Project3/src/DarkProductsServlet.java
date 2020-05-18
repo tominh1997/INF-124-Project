@@ -1,13 +1,8 @@
-package src;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import src.DBConnection;
-
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -25,7 +20,6 @@ public class DarkProductsServlet extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("Running Servlet...............");
 		String type = "dark";
-		request.setAttribute("test", "hello");
 		try {
 			// Get a connection from dataSource
 			Connection dbcon = DBConnection.initializeDatabase();
