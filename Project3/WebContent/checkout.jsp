@@ -33,7 +33,7 @@
 </div>
 
       
-    <div id="confirm">
+    <h3 id="confirm">
 
       <div class="container">
         <div class="section" >
@@ -41,49 +41,37 @@
         </div>
       </div>
       <table style="width:100%; padding-left: 20%;" >
-          <!---
           <tr>
-            <td>
-              <div id="title">Product</div>
-            </td>
-            <td>
-              <div id="product">Product</div>
-            </td>
+              <td>
+                  <h3>Name</h3>
+              </td>
+              <td>
+                  <h3>Description</h3>
+              </td>
+              <td>
+                  <h3>Quantity</h3>
+              </td>
+              <td>
+                  <h3>Price</h3>
+              </td>
           </tr>
-          <tr>
-            <td>
-              <div id="title">Quantity</div>
-            </td>
-            <td>
-              <div id="quantity">Quantity</div>
-            </td>
-          </tr>
-          --->
           <c:forEach items="${cart_items}" var="cart_items">
               <tr>
                   <td>
-                      <div id="title">Product</div>
+                      <h3> ${cart_items.name} </h3>
                   </td>
                   <td>
-                      <div id="product">${cart_items.name}</div>
+                      <img src="data:image/jpg;base64,${cart_items.image1}"/>
+                      <h3> ${cart_items.description} </h3>
+                  </td>
+                  <td>
+                      <h3> ${cart_items.quantity} </h3>
+                  </td>
+                  <td>
+                      <h3> $${cart_items.price} </h3>
                   </td>
               </tr>
-              <tr>
-                  <td>
-                      <div id="title">Quantity</div>
-                  </td>
-                  <td>
-                      <div id="quantity">${cart_items.quantity}</div>
-                  </td>
-              </tr>
-              <tr>
-                  <td>
-                      <div id="title">Price</div>
-                  </td>
-                  <td>
-                      <div id="price">${cart_items.price}</div>
-                  </td>
-              </tr>
+
           </c:forEach>
       </table>
 

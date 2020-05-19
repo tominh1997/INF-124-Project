@@ -11,6 +11,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @WebServlet(name="CheckOutServlet", urlPatterns = {"/checkout"})
 public class CheckOutServlet extends HttpServlet {
