@@ -15,7 +15,7 @@
 </head>
 <body>
 <div class="navbar">
-    <a href="#home">
+    <a href="homepage">
         <img src="images/logo/logo.png" alt="logo" style="width: 100px; height: 100px;">
     </a>
     <div class="subnav-left">
@@ -27,9 +27,9 @@
     <div class="subnav-right">
         <button class="subnavbtn">Products <i class="fa fa-caret-down"></i></button>
         <div class="subnav-content">
-            <a href="products.php?type=white"> White Chocolate</a>
-            <a href="products.php?type=dark">Dark Chocolate</a>
-            <a href="products.php?type=milk">Milk Chocolate</a>
+            <a href="products?type=White&forward=true"> White Chocolate</a>
+            <a href="products?type=Dark&forward=true">Dark Chocolate</a>
+            <a href="products?type=Milk&forward=true">Milk Chocolate</a>
         </div>
     </div>
 </div>
@@ -65,7 +65,7 @@
             <h1 class="slidesHeading">Sweet Dreams That You Can't Resist</h1>
             <h3 class="slidesDescription">Creamy, sweet and rich in flavor. Try out our white chocolates and fall in
                 love with them in your dreams.</h3>
-            <a href="products.php?type=white">
+            <a href="products?type=White&forward=true">
                 <button class="slideButton"> Learn More</button>
             </a>
             <div class="navigation" style="text-align:center">
@@ -85,7 +85,7 @@
             <h1 class="slidesHeading">Addicting Flavor That You Can't Stop</h1>
             <h3 class="slidesDescription">Bitter, bold and rich in flavor. Try out our dark chocolates and you would
                 wish you have bought more.</h3>
-            <a href="products.php?type=dark">
+            <a href="products?type=Dark&forward=true">
                 <button class="slideButton"> Learn More</button>
             </a>
             <div class="navigation" style="text-align:center">
@@ -105,7 +105,7 @@
             <h1 class="slidesHeading">Mixtures of Goodness That You Can't Have Enough</h1>
             <h3 class="slidesDescription">Milky, sweet and smooth in flavor. Try out our milk chocolates and you can
                 never have enough of them.</h3>
-            <a href="products.php?type=milk">
+            <a href="products?type=Milk&forward=true">
                 <button class="slideButton"> Learn More</button>
             </a>
             <div class="navigation" style="text-align:center">
@@ -123,7 +123,7 @@
 
 <div class="description">
     <div class="description-img">
-        <a href="products.php?type=white"> <img src="images/wc1.jpg"> </a>
+        <a href="products?type=White&forward=true"> <img src="images/wc1.jpg"> </a>
     </div>
 
     <div>
@@ -177,7 +177,7 @@
 
 <div class="description">
     <div class="description-img">
-        <a href="products.php?type=dark"> <img src="images/dc1.jpg"> </a>
+        <a href="products?type=Dark&forward=true"> <img src="images/dc1.jpg"> </a>
     </div>
 
     <div>
@@ -231,7 +231,7 @@
 
 <div class="description">
     <div class="description-img">
-        <a href="products.php?type=milk"> <img src="images/mc1.jpg"> </a>
+        <a href="products?type=Milk&forward=true"> <img src="images/mc1.jpg"> </a>
     </div>
 
     <div>

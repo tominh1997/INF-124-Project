@@ -22,11 +22,11 @@ public class HomepageServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String type = "white";
 		try {
-			RequestDispatcher rd= request.getRequestDispatcher("whiteProducts");
+			RequestDispatcher rd= request.getRequestDispatcher("products?type=White&forward=false");
 			rd.include(request, response);
-			RequestDispatcher rd2= request.getRequestDispatcher("darkProducts");
+			RequestDispatcher rd2= request.getRequestDispatcher("products?type=Dark&forward=false");
 			rd2.include(request, response);
-			RequestDispatcher rd3= request.getRequestDispatcher("milkProducts");
+			RequestDispatcher rd3= request.getRequestDispatcher("products?type=Milk&forward=false");
 			rd3.include(request, response);
 			request.getRequestDispatcher("/homepage.jsp").forward(request, response);
 		} catch (Exception e) {
