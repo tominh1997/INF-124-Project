@@ -33,7 +33,6 @@ public class CheckOutServlet extends HttpServlet {
             session.setAttribute("cart", cart);
             request.setAttribute("cart_items", cart.values());
             request.getRequestDispatcher("/checkout.jsp").forward(request, response);
-
         } catch(Exception e) {
             // set reponse status to 500 (Internal Server Error)
             System.out.println(e.toString());

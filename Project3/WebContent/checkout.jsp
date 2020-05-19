@@ -55,20 +55,20 @@
                   <h3>Price</h3>
               </td>
           </tr>
-          <c:forEach items="${cart_items}" var="cart_items">
+          <c:forEach items="${cart_items}" var="item">
               <tr>
                   <td>
-                      <h3> ${cart_items.name} </h3>
+                      <h3> ${item.name} </h3>
                   </td>
                   <td>
                       <img src="data:image/jpg;base64,${cart_items.image1}"/>
-                      <h3> ${cart_items.description} </h3>
+                      <h3> ${item.description} </h3>
                   </td>
                   <td>
-                      <h3> ${cart_items.quantity} </h3>
+                      <h3> ${item.quantity} </h3>
                   </td>
                   <td>
-                      <h3> $${cart_items.price} </h3>
+                      <h3> $${items.price} </h3>
                   </td>
               </tr>
 
