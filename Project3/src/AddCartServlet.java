@@ -44,7 +44,6 @@ public class AddCartServlet extends HttpServlet {
                 ResultSet rs = statement.executeQuery();
                 // Iterate through each row of rs
                 rs.next();
-                Item product = new Item();
                 product.setName(rs.getString("name"));
                 product.setId(rs.getString("id"));
                 product.setDescription(rs.getString("description"));
@@ -56,7 +55,6 @@ public class AddCartServlet extends HttpServlet {
                 statement.close();
                 dbcon.close();
             }
-            session.setAttribute("cart",cart);
             response.setStatus(200);
 
         }catch(Exception e){
