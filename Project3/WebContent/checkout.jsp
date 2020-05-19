@@ -36,35 +36,34 @@
           <h1 class="sectionTitle"> Checkout </h1>
         </div>
       </div>
-      <table style="width:100%; padding-left: 20%;" >
+      <table style="width:100%;" >
           <tr>
-              <td>
+              <th>
                   <h3>Name</h3>
-              </td>
-              <td>
+              </th>
+              <th>
                   <h3>Description</h3>
-              </td>
-              <td>
+              </th>
+              <th>
                   <h3>Quantity</h3>
-              </td>
-              <td>
+              </th>
+              <th>
                   <h3>Price</h3>
-              </td>
+              </th>
           </tr>
           <c:forEach items="${cart_items}" var="item">
               <tr>
                   <td>
-                      <h3> ${item.name} </h3>
+                      <h3> ${item.value.name} </h3>
                   </td>
                   <td>
-                      <img src="data:image/jpg;base64,${cart_items.image1}"/>
-                      <h3> ${item.description} </h3>
+                      <img style="width: 150px; height: 150px" src="data:image/jpg;base64,${item.value.image1}"/>
                   </td>
                   <td>
-                      <h3> ${item.quantity} </h3>
+                      <h3> ${item.value.quantity} </h3>
                   </td>
                   <td>
-                      <h3> $${items.price} </h3>
+                      <h3> $${item.value.price} </h3>
                   </td>
               </tr>
 
