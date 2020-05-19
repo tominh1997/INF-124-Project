@@ -52,11 +52,15 @@ public class AddCartServlet extends HttpServlet {
                 product.setType("type");
                 product.setPrice(rs.getDouble("price"));
                 product.setImage1(product.convertToBase64(rs.getBlob("image1")));
+                product.setImage2(product.convertToBase64(rs.getBlob("image2")));
+                product.setImage3(product.convertToBase64(rs.getBlob("image3")));
                 //Set attribute to use variable in jsp
                 rs.close();
                 statement.close();
                 dbcon.close();
             }
+            request.setAttribute("product", product);
+            request.getRequestDispatcher("/productDescription.jsp").forward(request, response);
             response.setStatus(200);
         }catch(Exception e){
             // write error message JSON object to output
