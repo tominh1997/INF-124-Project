@@ -28,6 +28,8 @@ public class HomepageServlet extends HttpServlet {
 			rd2.include(request, response);
 			RequestDispatcher rd3= request.getRequestDispatcher("products?type=Milk&forward=false");
 			rd3.include(request, response);
+			RequestDispatcher rd4= request.getRequestDispatcher("recentVisit");
+			rd4.include(request, response);
 			request.getRequestDispatcher("/homepage.jsp").forward(request, response);
 		} catch (Exception e) {
 			// set reponse status to 500 (Internal Server Error)

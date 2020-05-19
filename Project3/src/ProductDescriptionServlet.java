@@ -50,6 +50,7 @@ public class ProductDescriptionServlet extends HttpServlet {
 			statement.close();
 			dbcon.close();
 			request.setAttribute("product", product);
+			request.getRequestDispatcher("/recentVisit").include(request, response);
 			request.getRequestDispatcher("/productDescription.jsp").forward(request, response);
 		} catch (Exception e) {
 			// set reponse status to 500 (Internal Server Error)

@@ -120,7 +120,29 @@
 </div>
 <br>
 
+<div style="text-align: center; width: 100%">
+    <h1> Recently Viewed Items </h1>
+    <table style="width:100%; padding-left: 30px;">
+        <tr class="product-list">
+            <c:forEach items="${viewHistory}" var="product">
+            <td>
+                <div class="product-cell">
+                    <a href="productDescription?id=${product.id}">
+                        <img src="data:image/jpg;base64,${product.image1}"/>
+                        <span> ${product.name} </span>
+                    </a>
+                    <span> $ ${product.price} </span>
+                </div>
+            </td>
+            </c:forEach>
+        </tr>
+    </table>
+</div>
+<hr>
 <div class="description">
+    <div style="text-align: center; width: 100%">
+        <h1> White Chocolates </h1>
+    </div>
     <div class="description-img">
         <a href="products?type=White&forward=true"> <img src="images/wc1.jpg"> </a>
     </div>
@@ -175,10 +197,12 @@
 <hr>
 
 <div class="description">
+    <div style="text-align: center; width: 100%">
+        <h1> Dark Chocolates </h1>
+    </div>
     <div class="description-img">
         <a href="products?type=Dark&forward=true"> <img src="images/dc1.jpg"> </a>
     </div>
-
     <div>
         <p>
             Once the cacao pods have been harvested from the tree, the cocoa beans within are removed and fermented to a
@@ -229,6 +253,9 @@
 <hr>
 
 <div class="description">
+    <div style="text-align: center; width: 100%">
+        <h1> Milk Chocolates </h1>
+    </div>
     <div class="description-img">
         <a href="products?type=Milk&forward=true"> <img src="images/mc1.jpg"> </a>
     </div>
