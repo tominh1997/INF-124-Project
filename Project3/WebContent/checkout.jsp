@@ -31,10 +31,6 @@
         </div>
     </div>
 </div>
-
-      
-    <h3 id="confirm">
-
       <div class="container">
         <div class="section" >
           <h1 class="sectionTitle"> Checkout </h1>
