@@ -76,6 +76,14 @@
                       <div id="quantity">${cart_items.quantity}</div>
                   </td>
               </tr>
+              <tr>
+                  <td>
+                      <div id="title">Price</div>
+                  </td>
+                  <td>
+                      <div id="price">${cart_items.price}</div>
+                  </td>
+              </tr>
           </c:forEach>
       </table>
 

@@ -32,7 +32,7 @@ public class CheckOutServlet extends HttpServlet {
                 session.setAttribute("cart", new ArrayList<>() );
                 cart = (ArrayList<Item>) session.getAttribute("cart");
             }
-            
+
             request.setAttribute("cart_items", cart);
             request.getRequestDispatcher("/checkout.jsp").forward(request, response);
 
