@@ -1,13 +1,5 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Minh To
-  Date: 5/18/2020
-  Time: 8:37 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -23,7 +15,6 @@
     <a href="homepage">
         <img src="images/logo/logo.png" alt="logo" style="width: 100px; height: 100px;">
     </a>
-
     <div class="subnav">
         <a href="about-us.html">About Us</a>
     </div>
@@ -44,7 +35,7 @@
     <span class="header">Best Seller</span>
     <div class="row">
         <c:forEach items="${products}" var="product" begin="0" end="2">
-        <a href="#">
+        <a href="productDescription?id=${product.id}">
             <img src="data:image/jpg;base64,${product.image1}"/>
         </a>
         </c:forEach>
@@ -61,7 +52,7 @@
         <c:forEach items="${products}" var="product" begin="0" end="4">
             <td>
                 <div class="product-cell">
-                    <a href="#">
+                    <a href="productDescription?id=${product.id}">
                         <img src="data:image/jpg;base64,${product.image1}"/>
                         <span> ${product.name} </span>
                     </a>
@@ -74,7 +65,7 @@
         <c:forEach items="${products}" var="product" begin="5">
             <td>
                 <div class="product-cell">
-                    <a href="#">
+                    <a href="productDescription?id=${product.id}">
                         <img src="data:image/jpg;base64,${product.image1}"/>
                         <span> ${product.name} </span>
                     </a>

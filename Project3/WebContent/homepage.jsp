@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<!DOCTYPE html>
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -18,11 +17,11 @@
     <a href="homepage">
         <img src="images/logo/logo.png" alt="logo" style="width: 100px; height: 100px;">
     </a>
-    <div class="subnav-left">
-        <a href="homepage">Home</a>
-    </div>
     <div class="subnav">
         <a href="about-us.html">About Us</a>
+    </div>
+    <div class="subnav-left">
+        <a href="homepage">Home</a>
     </div>
     <div class="subnav-right">
         <button class="subnavbtn">Products <i class="fa fa-caret-down"></i></button>
@@ -149,7 +148,7 @@
             <c:forEach items="${whiteProducts}" var="product" begin="0" end="4">
                 <td>
                     <div class="product-cell">
-                        <a href="#">
+                        <a href="productDescription?id=${product.id}">
                             <img src="data:image/jpg;base64,${product.image1}"/>
                             <span> ${product.name} </span>
                         </a>
@@ -162,7 +161,7 @@
             <c:forEach items="${whiteProducts}" var="product" begin="5">
                 <td>
                     <div class="product-cell">
-                        <a href="#">
+                        <a href="productDescription?id=${product.id}">
                             <img src="data:image/jpg;base64,${product.image1}"/>
                             <span> ${product.name} </span>
                         </a>
@@ -203,7 +202,7 @@
             <c:forEach items="${darkProducts}" var="product" begin="0" end="4">
                 <td>
                     <div class="product-cell">
-                        <a href="#">
+                        <a href="productDescription?id=${product.id}">
                             <img src="data:image/jpg;base64,${product.image1}"/>
                             <span> ${product.name} </span>
                         </a>
@@ -216,7 +215,7 @@
             <c:forEach items="${darkProducts}" var="product" begin="5">
                 <td>
                     <div class="product-cell">
-                        <a href="#">
+                        <a href="productDescription?id=${product.id}">
                             <img src="data:image/jpg;base64,${product.image1}"/>
                             <span> ${product.name} </span>
                         </a>
@@ -249,7 +248,7 @@
             <c:forEach items="${milkProducts}" var="product" begin="0" end="4">
                 <td>
                     <div class="product-cell">
-                        <a href="#">
+                        <a href="productDescription?id=${product.id}">
                             <img src="data:image/jpg;base64,${product.image1}"/>
                             <span> ${product.name} </span>
                         </a>
@@ -262,7 +261,7 @@
             <c:forEach items="${milkProducts}" var="product" begin="5">
                 <td>
                     <div class="product-cell">
-                        <a href="#">
+                        <a href="productDescription?id=${product.id}">
                             <img src="data:image/jpg;base64,${product.image1}"/>
                             <span> ${product.name} </span>
                         </a>

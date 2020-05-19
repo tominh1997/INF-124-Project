@@ -114,15 +114,21 @@ hr {
     color: whitesmoke; 
 }
 
-.button {
-    background-color: saddlebrown; /* Green */
-    border: none;
+#sdButton{
+    border-style: solid;
+    border-color: black;
+    background-color: rgb(26, 115, 232);
     color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    text-decoration-color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 10px;
 }
 
+#sdButton:hover{
+    cursor: pointer;
+    border-style: solid;
+    border-color: black;
+    color: rgb(26, 115, 232);
+    background-color: white;
+    border-radius: 5px;
+}
