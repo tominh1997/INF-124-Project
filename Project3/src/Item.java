@@ -1,4 +1,9 @@
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Blob;
+import java.sql.SQLException;
+import java.util.Base64;
 
 public class Item {
     String id;
@@ -6,9 +11,9 @@ public class Item {
     String description;
     double price;
     String type;
-    Blob image1;
-    Blob image2;
-    Blob image3;
+    String image1;
+    String image2;
+    String image3;
     String quantity;
 
     public Item(String name, String id){
@@ -66,27 +71,41 @@ public class Item {
         this.type = type;
     }
 
-    public Blob getImage1() {
-        return image1;
+    public String getImage1() { return image1; }
+    public String convertToBase64(Blob image) throws IOException, SQLException {
+        InputStream inputStream = image.getBinaryStream();
+        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
+        byte[] buffer = new byte[4096];
+        int bytesRead = -1;
+
+        while ((bytesRead = inputStream.read(buffer)) != -1) {
+            outputStream.write(buffer, 0, bytesRead);
+        }
+
+        byte[] imageBytes = outputStream.toByteArray();
+
+        String base64Image = Base64.getEncoder().encodeToString(imageBytes);
+
+        inputStream.close();
+        outputStream.close();
+        return base64Image;
     }
 
-    public void setImage1(Blob image1) {
+    public void setImage1(String image1) {
         this.image1 = image1;
     }
 
-    public Blob getImage2() {
-        return image2;
-    }
+    public String getImage2() { return image2; }
 
-    public void setImage2(Blob image2) {
+    public void setImage2(String image2) {
         this.image2 = image2;
     }
 
-    public Blob getImage3() {
+    public String getImage3() {
         return image3;
     }
 
-    public void setImage3(Blob image3) {
+    public void setImage3(String image3) {
         this.image3 = image3;
     }
 

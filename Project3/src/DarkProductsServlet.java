@@ -9,6 +9,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
+@WebServlet(name="darkProductsServlet", urlPatterns = {"/darkProducts"})
 public class DarkProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 2L;
 
@@ -18,7 +19,6 @@ public class DarkProductsServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		System.out.println("Running Servlet...............");
 		String type = "dark";
 		try {
 			// Get a connection from dataSource
@@ -32,10 +32,9 @@ public class DarkProductsServlet extends HttpServlet {
 			// Set the parameter represented by "?" in the query to the id we get from url,
 			// num 1 indicates the first "?" in the query
 			statement.setString(1, type);
-			request.setAttribute("test", new String("hello"));
 			// Perform the query
 			ResultSet rs = statement.executeQuery();
-			ArrayList<Item> whiteProducts = new ArrayList<Item>();
+			ArrayList<Item> darkProducts = new ArrayList<Item>();
 			// Iterate through each row of rs
 			while (rs.next()) {
 				Item product = new Item();
@@ -43,20 +42,19 @@ public class DarkProductsServlet extends HttpServlet {
 				product.setDescription(rs.getString("description"));
 				product.setType(type);
 				product.setPrice(rs.getDouble("price"));
-				product.setImage1(rs.getBlob("image1"));
-				product.setImage2(rs.getBlob("image2"));
-				product.setImage3(rs.getBlob("image3"));
-				whiteProducts.add(product);
+				product.setImage1(product.convertToBase64(rs.getBlob("image1")));
+				product.setImage2(product.convertToBase64(rs.getBlob("image2")));
+				product.setImage3(product.convertToBase64(rs.getBlob("image3")));
+				darkProducts.add(product);
 			}
 			//Set attribute to use variable in jsp
 			rs.close();
 			statement.close();
 			dbcon.close();
-			request.setAttribute("whiteProducts", whiteProducts);
-			request.getRequestDispatcher("./homepage.jsp").forward(request, response);
+			request.setAttribute("darkProducts", darkProducts);
 		} catch (Exception e) {
 			// set reponse status to 500 (Internal Server Error)
-			System.out.println("Exeception Raised");
+			System.out.println(e.toString());
 			response.setStatus(500);
 		}
 	}

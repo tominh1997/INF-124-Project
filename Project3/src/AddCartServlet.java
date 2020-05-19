@@ -1,5 +1,3 @@
-
-
 import com.google.gson.JsonObject;
 
 import javax.servlet.ServletException;
@@ -11,8 +9,6 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.Queue;
 
 @WebServlet(name = "AddCartServlet", urlPatterns = "/api/add-cart")
 public class AddCartServlet extends HttpServlet {
