@@ -53,7 +53,9 @@
 </div>
 <hr>
 <div style="width:100%; text-align: center;">
+    <a href="addToCart?id=${product.id}">
     <button id="sdButton" onclick="">Add To Cart</button>
+    </a>
 </div>
 </body>
 </html>

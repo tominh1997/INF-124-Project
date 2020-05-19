@@ -14,14 +14,14 @@ public class Item {
     String image1;
     String image2;
     String image3;
-    String quantity;
+    int quantity = 1;
 
     public Item(String name, String id){
         this.name = name;
         this.id = id;
     }
 
-    public Item(String name, String id, double price, String quantity){
+    public Item(String name, String id, double price, int quantity){
         this.name = name;
         this.id = id;
         this.price = price;
@@ -109,11 +109,11 @@ public class Item {
         this.image3 = image3;
     }
 
-    public String getQuantity() {
+    public int getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(String quantity) {
+    public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
 }

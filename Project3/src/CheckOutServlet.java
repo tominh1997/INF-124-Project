@@ -12,7 +12,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 
-@WebServlet(name="CheckOutServlet", urlPatterns = {"/check-out"})
+@WebServlet(name="CheckOutServlet", urlPatterns = {"/checkout"})
 public class CheckOutServlet extends HttpServlet {
     private static final long serialVersionUID = 2L;
 
@@ -25,15 +25,13 @@ public class CheckOutServlet extends HttpServlet {
 
         try{
             HttpSession session = request.getSession();
-            System.out.println(session.getId());
-
-            ArrayList<Item> cart = (ArrayList<Item>)session.getAttribute("cart");
+            HashMap<String, Item> cart = (HashMap<String, Item>)session.getAttribute("cart");
             if(cart == null) {
-                session.setAttribute("cart", new ArrayList<>() );
-                cart = (ArrayList<Item>) session.getAttribute("cart");
+                session.setAttribute("cart", new HashMap<String, Item>() );
+                cart = (HashMap<String, Item>) session.getAttribute("cart");
             }
 
-            request.setAttribute("cart_items", cart);
+            request.setAttribute("cart_items", cart.values());
             request.getRequestDispatcher("/checkout.jsp").forward(request, response);
 
         } catch(Exception e) {

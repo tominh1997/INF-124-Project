@@ -10,43 +10,58 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-@WebServlet(name = "AddCartServlet", urlPatterns = "/api/add-cart")
+@WebServlet(name = "AddCartServlet", urlPatterns = "/addToCart")
 public class AddCartServlet extends HttpServlet {
     private static final long serialVersionUID = 2L;
     @SuppressWarnings("unchecked")
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        response.setContentType("application/json"); // Response mime type
-        JsonObject jsonObject = new JsonObject();
-        PrintWriter out = response.getWriter();
-
         String id = request.getParameter("id");
-        String name = request.getParameter("name");
-        String quantity = request.getParameter("quantity");
-        String price = request.getParameter("price");
-
         try{
             HttpSession session = request.getSession();
-            System.out.println(session.getId());
-
-            ArrayList<Item> cart = (ArrayList<Item>)session.getAttribute("cart");
+            HashMap<String, Item> cart = (HashMap<String, Item>)session.getAttribute("cart");
             if(cart == null) {
-                session.setAttribute("cart", new ArrayList<>() );
-                cart = (ArrayList<Item>) session.getAttribute("cart");
+                session.setAttribute("cart", new HashMap<String, Item>() );
+                cart = (HashMap<String, Item>) session.getAttribute("cart");
             }
+            Item product = cart.getOrDefault(id, new Item());
+            if (cart.containsKey(id)) {
+                product.setQuantity(product.getQuantity() + 1);
+            }
+            else{
+                // Get a connection from dataSource
+                Connection dbcon = DBConnection.initializeDatabase();
 
-            cart.add(new Item(name,id, Double.valueOf(price),quantity));
+                // Construct a query with parameter represented by "?"
+                String query = "SELECT * from chocoholic_db.products where id = ?";
+
+                // Declare our statement
+                PreparedStatement statement = dbcon.prepareStatement(query);
+                // Set the parameter represented by "?" in the query to the id we get from url,
+                // num 1 indicates the first "?" in the query
+                statement.setInt(1, Integer.parseInt(id));
+                // Perform the query
+                ResultSet rs = statement.executeQuery();
+                // Iterate through each row of rs
+                rs.next();
+                Item product = new Item();
+                product.setName(rs.getString("name"));
+                product.setId(rs.getString("id"));
+                product.setDescription(rs.getString("description"));
+                product.setType("type");
+                product.setPrice(rs.getDouble("price"));
+                product.setImage1(product.convertToBase64(rs.getBlob("image1")));
+                //Set attribute to use variable in jsp
+                rs.close();
+                statement.close();
+                dbcon.close();
+            }
             session.setAttribute("cart",cart);
-            System.out.println(cart.toString());
-            jsonObject.addProperty("status", 200);
-            out.write(jsonObject.toString());
             response.setStatus(200);
 
         }catch(Exception e){
             // write error message JSON object to output
-            jsonObject.addProperty("message", e.getMessage());
-            out.write(jsonObject.toString());
-            e.printStackTrace();
+            System.out.println(e.toString());
             // set reponse status to 500 (Internal Server Error)
             response.setStatus(500);
         }
