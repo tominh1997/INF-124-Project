@@ -30,7 +30,12 @@ public class CheckOutServlet extends HttpServlet {
             if(cart == null) {
                 cart = new HashMap<String, Item>();
             }
+            double total = 0;
+            for (Item item: cart.values()){
+                total += (item.getPrice() * item.getQuantity());
+            }
             session.setAttribute("cart", cart);
+            request.setAttribute("total", total);
             request.setAttribute("cart_items", cart);
             request.getRequestDispatcher("/checkout.jsp").forward(request, response);
         } catch(Exception e) {

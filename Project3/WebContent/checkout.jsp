@@ -68,6 +68,18 @@
               </tr>
 
           </c:forEach>
+          <tr>
+              <th>
+                  <h3>Total Amount:</h3>
+              </th>
+              <th>
+              </th>
+              <th>
+              </th>
+              <th>
+                  <h3>$${total}</h3>
+              </th>
+          </tr>
       </table>
 
 
