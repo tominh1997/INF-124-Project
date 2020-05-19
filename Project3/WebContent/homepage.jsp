@@ -139,10 +139,10 @@
     </table>
 </div>
 <hr>
+<div style="text-align: center; width: 100%">
+    <h1> White Chocolates </h1>
+</div>
 <div class="description">
-    <div style="text-align: center; width: 100%">
-        <h1> White Chocolates </h1>
-    </div>
     <div class="description-img">
         <a href="products?type=White&forward=true"> <img src="images/wc1.jpg"> </a>
     </div>
@@ -195,11 +195,11 @@
     </table>
 </div>
 <hr>
-
+<div style="text-align: center; width: 100%">
+    <h1> Dark Chocolates </h1>
+</div>
 <div class="description">
-    <div style="text-align: center; width: 100%">
-        <h1> Dark Chocolates </h1>
-    </div>
+
     <div class="description-img">
         <a href="products?type=Dark&forward=true"> <img src="images/dc1.jpg"> </a>
     </div>
@@ -251,11 +251,11 @@
     </table>
 </div>
 <hr>
-
+<div style="text-align: center; width: 100%">
+    <h1> Milk Chocolates </h1>
+</div>
 <div class="description">
-    <div style="text-align: center; width: 100%">
-        <h1> Milk Chocolates </h1>
-    </div>
+
     <div class="description-img">
         <a href="products?type=Milk&forward=true"> <img src="images/mc1.jpg"> </a>
     </div>
