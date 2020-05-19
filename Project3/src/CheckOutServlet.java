@@ -28,10 +28,9 @@ public class CheckOutServlet extends HttpServlet {
             HttpSession session = request.getSession();
             HashMap<String, Item> cart = (HashMap<String, Item>)session.getAttribute("cart");
             if(cart == null) {
-                session.setAttribute("cart", new HashMap<String, Item>() );
-                cart = (HashMap<String, Item>) session.getAttribute("cart");
+                cart = new HashMap<String, Item>();
             }
-
+            session.setAttribute("cart", cart);
             request.setAttribute("cart_items", cart.values());
             request.getRequestDispatcher("/checkout.jsp").forward(request, response);
 

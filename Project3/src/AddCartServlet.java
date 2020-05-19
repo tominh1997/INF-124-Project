@@ -23,8 +23,8 @@ public class AddCartServlet extends HttpServlet {
             HttpSession session = request.getSession();
             HashMap<String, Item> cart = (HashMap<String, Item>)session.getAttribute("cart");
             if(cart == null) {
-                session.setAttribute("cart", new HashMap<String, Item>() );
-                cart = (HashMap<String, Item>) session.getAttribute("cart");
+
+                cart = new HashMap<String, Item>();
             }
             Item product = cart.getOrDefault(id, new Item());
             if (cart.containsKey(id)) {
@@ -60,6 +60,7 @@ public class AddCartServlet extends HttpServlet {
                 dbcon.close();
             }
             request.setAttribute("product", product);
+            session.setAttribute("cart", cart);
             request.getRequestDispatcher("/productDescription.jsp").forward(request, response);
             response.setStatus(200);
         }catch(Exception e){
