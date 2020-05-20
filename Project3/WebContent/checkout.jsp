@@ -31,7 +31,7 @@
         </div>
     </div>
     <div class="subnav-right-right">
-	    <a href="checkout"><i class="fa fa-shopping-cart fa-7x"></i></a>
+	    <a href="checkout"><i style="font-size: 2em;" class="fa fa-shopping-cart fa-7x"></i></a>
 	</div> 
 </div>
       <div class="container">
@@ -105,8 +105,8 @@
             
             <h2> Shipping Address </h2>  
             <div class = "info-layout"> 
-                <label for = "adress"> Address </label>
-                <input type = "text" name = "adrress" id = "adrress" placeholder = "street address" required>
+                <label for = "address"> Address </label>
+                <input type = "text" name = "address" id = "address" placeholder = "street address" required>
     
             
                 <label for = "city"> City </label>
@@ -121,10 +121,8 @@
                 <input type = "text" name = "country" id = "country" required>
           
                 <label for = "zipCode"> Zip Code </label>
-                <input type = "text" name = "zipCode" id = "zip" required autocomplete="on">
-    
-                <label for = "tax"> Tax </label>
-                <input type = "text" name = "tax" id = "tax" required>
+                <input type = "text" name = "zipCode" id = "zipCode" required autocomplete="on">
+
             </div>
                 
             
