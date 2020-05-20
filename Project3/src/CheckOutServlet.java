@@ -12,11 +12,12 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
-
+import java.math.RoundingMode;
+import java.text.DecimalFormat;
 @WebServlet(name="CheckOutServlet", urlPatterns = {"/checkout"})
 public class CheckOutServlet extends HttpServlet {
     private static final long serialVersionUID = 2L;
-
+    private static DecimalFormat df2 = new DecimalFormat("#.##");
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
      *      response)
@@ -35,7 +36,7 @@ public class CheckOutServlet extends HttpServlet {
                 total += (item.getPrice() * item.getQuantity());
             }
             session.setAttribute("cart", cart);
-            request.setAttribute("total", total);
+            request.setAttribute("total", df2.format(total));
             request.setAttribute("cart_items", cart);
             request.getRequestDispatcher("/checkout.jsp").forward(request, response);
         } catch(Exception e) {

@@ -9,12 +9,13 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 
 @WebServlet(name="ProductsServlet", urlPatterns = {"/products"})
 public class ProductsServlet extends HttpServlet {
 	private static final long serialVersionUID = 2L;
-
+	private static DecimalFormat df2 = new DecimalFormat("#.##");
 	/**
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
@@ -44,7 +45,7 @@ public class ProductsServlet extends HttpServlet {
 				product.setId(rs.getString("id"));
 				product.setDescription(rs.getString("description"));
 				product.setType(type);
-				product.setPrice(rs.getDouble("price"));
+				product.setPrice(Double.parseDouble(df2.format(rs.getDouble("price"))));
 				product.setImage1(product.convertToBase64(rs.getBlob("image1")));
 				genericProducts.add(product);
 			}
