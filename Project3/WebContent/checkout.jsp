@@ -91,7 +91,7 @@
             
             <h2> Shipping Address </h2>  
             <div class = "info-layout"> 
-                <label for = "adrress"> Address </label>
+                <label for = "adress"> Address </label>
                 <input type = "text" name = "adrress" id = "adrress" placeholder = "street address" required>
     
             
