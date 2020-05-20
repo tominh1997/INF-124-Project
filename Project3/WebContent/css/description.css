@@ -132,3 +132,10 @@ hr {
     background-color: white;
     border-radius: 5px;
 }
+
+th, td{
+    text-align: center;
+    padding: 5px;
+}
+
+tr{padding: 5px;}
