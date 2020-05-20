@@ -54,16 +54,16 @@
           <c:forEach items="${cart_items}" var="item">
               <tr>
                   <td>
-                      <h3> ${item.value.name} </h3>
+                      <h3> ${item.name} </h3>
                   </td>
                   <td>
                       <img style="width: 150px; height: 150px" src="data:image/jpg;base64,${item.value.image1}"/>
                   </td>
                   <td>
-                      <h3> ${item.value.quantity} </h3>
+                      <h3> ${item.quantity} </h3>
                   </td>
                   <td>
-                      <h3> $${item.value.price} </h3>
+                      <h3> $${item.price} </h3>
                   </td>
               </tr>
 
