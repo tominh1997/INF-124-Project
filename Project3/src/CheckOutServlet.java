@@ -20,8 +20,6 @@ public class CheckOutServlet extends HttpServlet {
     private static final long serialVersionUID = 2L;
 
 
-    @Resource(name = "jdbc/moviedb")
-    private DataSource dataSource;
     private static DecimalFormat df2 = new DecimalFormat("#.##");
     /**
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
@@ -30,7 +28,7 @@ public class CheckOutServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String name = request.getParameter("name ");
+        String name = request.getParameter("name");
         String phone = request.getParameter("phone");
         String adrress = request.getParameter("adrress");
         String city = request.getParameter("city");
@@ -47,12 +45,12 @@ public class CheckOutServlet extends HttpServlet {
         double total_before_tax =0;
         double grand_total =0;
         try{
-            Connection dbconMovies = dataSource.getConnection();
+            Connection dbcon = DBConnection.initializeDatabase();
             HttpSession session = request.getSession();
             HashMap<String, Item> cart = (HashMap<String, Item>)session.getAttribute("cart");
             String query = "INSERT INTO orders VALUES (NULL, ? , ? , ?, ? , ?, ? , ?, ? , ?, ?  );";
             for(Item it : cart.values()){
-                PreparedStatement statement = dbconMovies.prepareStatement(query);
+                PreparedStatement statement = dbcon.prepareStatement(query);
                 statement.setString(1,name);
                 statement.setString(2, phone);
                 statement.setInt(3,Integer.valueOf(it.id));
@@ -61,7 +59,7 @@ public class CheckOutServlet extends HttpServlet {
                 statement.setDouble(6, it.quantity * it.price * Double.valueOf(tax) );
                 item_subtotal += it.quantity * it.price;
 
-                statement.setString(7,adrress + city + state + country + zipCode);
+                statement.setString(7,adrress + " " + city + " " + state + " " + country + " " + zipCode);
                 statement.setInt(8,Integer.valueOf(shipping));
                 statement.setString(9,card);
                 statement.setInt(10, Integer.valueOf(cvv));
@@ -82,13 +80,36 @@ public class CheckOutServlet extends HttpServlet {
             request.setAttribute("shipping", shipping);
             total_before_tax = item_subtotal + Double.valueOf(shipping);
             request.setAttribute("total_before_tax", total_before_tax);
-            request.setAttribute("grand_total", grand_total* Double.valueOf(tax));
+            request.setAttribute("grand_total", total_before_tax * (Double.valueOf(tax)/100) + total_before_tax);
 
 
 
-            request.setAttribute("cart_items", cart.values());
+            request.setAttribute("cart_items", cart);
             request.getRequestDispatcher("/confirmation.jsp").forward(request, response);
 
+        } catch(Exception e) {
+            // set reponse status to 500 (Internal Server Error)
+            System.out.println(e.toString());
+            response.setStatus(500);
+        }
+    }
+
+    /**
+     * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+     *      response)
+     */
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+
+        try{
+            HttpSession session = request.getSession();
+            HashMap<String, Item> cart = (HashMap<String, Item>)session.getAttribute("cart");
+            if(cart == null) {
+                cart = new HashMap<String, Item>();
+            }
+            session.setAttribute("cart", cart);
+            request.setAttribute("cart_items", cart);
+            request.getRequestDispatcher("/checkout.jsp").forward(request, response);
         } catch(Exception e) {
             // set reponse status to 500 (Internal Server Error)
             System.out.println(e.toString());

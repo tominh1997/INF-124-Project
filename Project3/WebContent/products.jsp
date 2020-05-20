@@ -29,6 +29,9 @@
             <a href="products?type=Milk&forward=true">Milk Chocolate</a>
         </div>
     </div>
+    <div class="subnav-right-right">
+	    <a href="checkout"><i class="fa fa-shopping-cart fa-7x"></i></a>
+	</div> 
 </div>
 
 <div class="best-seller">

@@ -39,7 +39,13 @@ body {
     position: absolute;
     padding-top: 40px;
   }
-  
+  .subnav-right-right{
+    float: none;
+    overflow: hidden;
+    left: 90%;
+    position: absolute;
+    padding-top: 40px;
+  }
   .subnav-right .subnavbtn {
     font-size: 16px;  
     border: none;

@@ -28,6 +28,9 @@
               <a href="products.php?type=milk">Milk Chocolate</a>
           </div>
         </div>
+        <div class="subnav-right-right">
+          <a href="checkout"><i class="fa fa-shopping-cart fa-7x"></i></a>
+        </div> 
       </div>
 
       
@@ -40,56 +43,51 @@
       </div>
       <table style="width:100%; padding-left: 20%;" >
           <tr>
-            <td>
-              <div id="title">Order Number</div>
-            </td>
-            <td>
-              <div id="order_number">${order_number}</div>
-            </td>
+              <th>
+                  <h3>Name</h3>
+              </th>
+              <th>
+                  <h3>Description</h3>
+              </th>
+              <th>
+                  <h3>Quantity</h3>
+              </th>
+              <th>
+                  <h3>Price</h3>
+              </th>
           </tr>
-          <tr>
-            <td>
-              <div id="title">Name</div>
-            </td>
-            <td>
-              <div id="name">${name}</div>
-            </td>
-          </tr>
-          <!---
-          <tr>
-            <td>
-              <div id="title">Product</div>
-            </td>
-            <td>
-              <div id="product">Product</div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <div id="title">Quantity</div>
-            </td>
-            <td>
-              <div id="quantity">Quantity</div>
-            </td>
-          </tr>
-          --->
           <c:forEach items="${cart_items}" var="item">
               <tr>
                   <td>
-                      <h3> ${item.name} </h3>
+                      <h3> ${item.value.name} </h3>
                   </td>
                   <td>
                       <img style="width: 150px; height: 150px" src="data:image/jpg;base64,${item.value.image1}"/>
                   </td>
                   <td>
-                      <h3> ${item.quantity} </h3>
+                      <h3> ${item.value.quantity} </h3>
                   </td>
                   <td>
-                      <h3> $${item.price} </h3>
+                      <h3> $${item.value.price} </h3>
                   </td>
               </tr>
-
           </c:forEach>
+          <tr>
+              <td>
+                  <div id="title">Order Number</div>
+              </td>
+              <td>
+                  <div id="order_number">${order_number}</div>
+              </td>
+          </tr>
+          <tr>
+              <td>
+                  <div id="title">Name</div>
+              </td>
+              <td>
+                  <div id="name">${name}</div>
+              </td>
+          </tr>
         <tr>
           <td>
             <div id="title">Item Subtotal</div>
