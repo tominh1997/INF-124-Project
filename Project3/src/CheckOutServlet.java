@@ -32,16 +32,20 @@ public class CheckOutServlet extends HttpServlet {
 
         String name = request.getParameter("name ");
         String phone = request.getParameter("phone");
-        String product_id = request.getParameter("product_id");
-        String product_name = request.getParameter("product_name");
-        String quantity = request.getParameter("quantity");
-        String total_amount = request.getParameter("total_amount");
         String adrress = request.getParameter("adrress");
-        String shipping_method = request.getParameter("shipping_method");
-        String credit_card_number = request.getParameter("credit_card_number");
-        String CVV = request.getParameter("CVV");
+        String city = request.getParameter("city");
+        String state = request.getParameter("state");
+        String country = request.getParameter("country");
+        String zipCode = request.getParameter("zipCode");
+        String tax = request.getParameter("tax");
+        String shipping = request.getParameter("shipping method");
+        String card = request.getParameter("cardnum");
+        String cvv = request.getParameter("cvv");
 
-
+        double item_subtotal =0;
+        int order_number = 0;
+        double total_before_tax =0;
+        double grand_total =0;
         try{
             Connection dbconMovies = dataSource.getConnection();
             HttpSession session = request.getSession();
@@ -52,17 +56,38 @@ public class CheckOutServlet extends HttpServlet {
                 statement.setString(1,name);
                 statement.setString(2, phone);
                 statement.setInt(3,Integer.valueOf(it.id));
+                statement.setString(4, it.name);
+                statement.setInt(5,it.quantity);
+                statement.setDouble(6, it.quantity * it.price * Double.valueOf(tax) );
+                item_subtotal += it.quantity * it.price;
+
+                statement.setString(7,adrress + city + state + country + zipCode);
+                statement.setInt(8,Integer.valueOf(shipping));
+                statement.setString(9,card);
+                statement.setInt(10, Integer.valueOf(cvv));
+
+                System.out.println(statement);
+
+                order_number = statement.executeUpdate();
+                statement.close();
+
 
             }
 
-            double total = 0;
-            for (Item item: cart.values()){
-                total += (item.getPrice() * item.getQuantity());
-            }
-            session.setAttribute("cart", cart);
-            request.setAttribute("total", df2.format(total));
-            request.setAttribute("cart_items", cart);
-            request.getRequestDispatcher("/checkout.jsp").forward(request, response);
+            request.setAttribute("name", name);
+            request.setAttribute("shipping", shipping);
+            request.setAttribute("tax", tax);
+            request.setAttribute("item_subtotal", item_subtotal);
+            request.setAttribute("order_number", order_number);
+            request.setAttribute("shipping", shipping);
+            total_before_tax = item_subtotal + Double.valueOf(shipping);
+            request.setAttribute("total_before_tax", total_before_tax);
+            request.setAttribute("grand_total", grand_total* Double.valueOf(tax));
+
+
+
+            request.setAttribute("cart_items", cart.values());
+            request.getRequestDispatcher("/confirmation.jsp").forward(request, response);
 
         } catch(Exception e) {
             // set reponse status to 500 (Internal Server Error)

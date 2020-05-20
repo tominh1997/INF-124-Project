@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -42,7 +44,7 @@
               <div id="title">Order Number</div>
             </td>
             <td>
-              <div id="order_number">Order Number</div>
+              <div id="order_number">${order_number}</div>
             </td>
           </tr>
           <tr>
@@ -50,7 +52,7 @@
               <div id="title">Name</div>
             </td>
             <td>
-              <div id="name">Name</div>
+              <div id="name">${name}</div>
             </td>
           </tr>
           <!---
@@ -71,13 +73,29 @@
             </td>
           </tr>
           --->
-          <tbody id=table_body></tbody>
+          <c:forEach items="${cart_items}" var="item">
+              <tr>
+                  <td>
+                      <h3> ${item.value.name} </h3>
+                  </td>
+                  <td>
+                      <img style="width: 150px; height: 150px" src="data:image/jpg;base64,${item.value.image1}"/>
+                  </td>
+                  <td>
+                      <h3> ${item.value.quantity} </h3>
+                  </td>
+                  <td>
+                      <h3> $${item.value.price} </h3>
+                  </td>
+              </tr>
+
+          </c:forEach>
         <tr>
           <td>
             <div id="title">Item Subtotal</div>
           </td>
           <td>
-            <div id="item_subtotal">Item Subtotal</div>
+            <div id="item_subtotal">${item_subtotal}</div>
           </td>
         </tr>
         <tr>
@@ -85,7 +103,7 @@
             <div id="title">Shipping</div>
           </td>
           <td>
-            <div id="shipping">Shipping</div>
+            <div id="shipping">${shipping}</div>
           </td>
         </tr>
         <tr>
@@ -93,7 +111,7 @@
             <div id="title">Total Before Tax</div>
           </td>
           <td>
-            <div id="total_before_tax">Total Before Tax</div>
+            <div id="total_before_tax">${total_before_tax}</div>
           </td>
         </tr>
         <tr>
@@ -101,7 +119,7 @@
             <div id="title">Tax</div>
           </td>
           <td>
-            <div id="tax">Tax</div>
+            <div id="tax">${tax}</div>
           </td>
         </tr>
         <tr>
@@ -109,7 +127,7 @@
             <div id="title">Grand Total</div>
           </td>
           <td>
-            <div id="grand_total">Grand Total</div>
+            <div id="grand_total">${grand_total}</div>
           </td>
         </tr>
       </table>

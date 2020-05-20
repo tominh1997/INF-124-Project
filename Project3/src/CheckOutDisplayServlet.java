@@ -13,7 +13,7 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-@WebServlet(name="CheckOutServlet", urlPatterns = {"/checkout-display"})
+@WebServlet(name="CheckOutDisplayServlet", urlPatterns = {"/checkout-display"})
 public class CheckOutDisplayServlet extends HttpServlet {
     private static final long serialVersionUID = 2L;
 
