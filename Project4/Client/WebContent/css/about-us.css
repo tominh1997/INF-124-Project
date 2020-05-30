@@ -1,0 +1,51 @@
+hr{
+  border-top: 5px solid black;
+}
+.container{
+  color: #f5f5f5;
+  background-color: #8A4E41;
+  padding-top: 5px;
+}
+.section{
+  text-align: center;
+}
+
+#membersContainer{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.fa-book, .fa-star, .fa-certificate, .fa-user{
+  font-size: 3vw;
+}
+
+.memberPanel{
+  text-align: center;
+  margin: 5px;
+}
+
+.sectionTitle{
+  font-weight: bold;
+}
+
+.sectionDescription{
+  text-align: left;
+  font-size: 1.5vw;
+  text-indent: 40px;
+}
+
+.section li{
+  list-style-position: inside;
+  padding-left: 0;
+  margin: 0;
+}
+
+.memberName{
+  font-weight: bold;
+}
+
+.memberPicture{
+  height: 400px;
+  width: 350px;
+}

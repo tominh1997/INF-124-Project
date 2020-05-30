@@ -1,0 +1,138 @@
+body {
+    font-family: Courier;
+    margin: 0;
+    background-color: #8A4E41; 
+    
+  }
+
+.header{
+    width: 100%; 
+    height: 40px; 
+    display: block; 
+    background-color: #333; 
+   
+  }
+
+.header h1{ 
+    color: whitesmoke; 
+    text-align: center; 
+}
+
+.description{
+    padding-top: 20px; 
+  }
+
+.description img{ 
+    width: 30%;
+    padding-left: 50px;
+    width:  400px;
+    height: 400px;
+    
+  }
+
+.description p{
+    text-align: justify; 
+    padding: 1px;
+    padding-right: 100px; 
+    padding-left: 100px; 
+    color: whitesmoke; 
+}
+
+
+hr { 
+    margin-top: .5em; 
+    border: 10px solid #333;
+    display: block; 
+}
+
+.form { 
+    text-align: center;
+}
+
+.form h1 { 
+    color: #333; 
+    font-size: 30px; 
+    padding-left: 20px; 
+    margin: 0px; 
+    color: whitesmoke; 
+}
+
+.form h2, h3{ 
+    color: whitesmoke; 
+}
+
+.form hr{ 
+    border: 1px solid #333; 
+}
+
+.form-layout{ 
+    padding: 20px; 
+    max-width: 700px; 
+    margin: auto; 
+    border: 10px solid #333; 
+}
+
+.form-layout hr{ 
+    border: 3px solid #333;
+}
+
+
+.info-layout label{ 
+    display: block; 
+    padding: .5rem 0; 
+    color: whitesmoke; 
+}
+
+.info-layout input{
+    display: block; 
+    width: 100%; 
+    border: 1.5px solid #333; 
+}
+
+#order{ 
+    font-size: 20px; 
+    border: 0; 
+    background: #333; 
+    padding: .5rem; 
+    color: whitesmoke; 
+    margin-top: 1rem; 
+    width: auto;
+    text-transform: uppercase; 
+    cursor: pointer; 
+    font-family: Courier; 
+    width: 100%; 
+}
+
+.radio-layout{ 
+
+}
+
+.radio-layout{ 
+    color: whitesmoke; 
+}
+
+#sdButton{
+    border-style: solid;
+    border-color: black;
+    background-color: rgb(26, 115, 232);
+    color: white;
+    border-radius: 5px;
+    margin-top: 10px;
+    padding: 10px;
+}
+
+#sdButton:hover{
+    cursor: pointer;
+    border-style: solid;
+    border-color: black;
+    color: rgb(26, 115, 232);
+    background-color: white;
+    border-radius: 5px;
+}
+
+th, td{
+    text-align: center;
+    padding: 5px;
+}
+
+tr{padding: 5px;}
