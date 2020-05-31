@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/TodoRestService.iml" filepath="$PROJECT_DIR$/TodoRestService.iml" />
+      <module fileurl="file://$PROJECT_DIR$/ChocoholicRestService.iml" filepath="$PROJECT_DIR$/ChocoholicRestService.iml" />
     </modules>
   </component>
 </project>

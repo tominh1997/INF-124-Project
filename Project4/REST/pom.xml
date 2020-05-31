@@ -3,11 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.uci</groupId>
-    <artifactId>TodoRestService</artifactId>
+    <artifactId>ChocoholicRestService</artifactId>
     <version>v1</version>
     <packaging>war</packaging>
 
-    <name>TodoRestService</name>
+    <name>ChocoholicRestService</name>
 
     <properties>
         <endorsed.dir>${project.build.directory}/endorsed</endorsed.dir>

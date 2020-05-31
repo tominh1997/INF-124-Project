@@ -16,7 +16,7 @@ import java.util.HashMap;
 public class ChocoholicRestService {
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("{type}")
+    @Path("/products/{type}")
     public String getItemsByType(@PathParam("type") String type) throws SQLException, ClassNotFoundException {
         Connection dbcon = DatabaseConnector.initializeDatabase();
         ArrayList<Item> products = DatabaseUtils.retrieveItemsByType(dbcon, type);
@@ -33,7 +33,7 @@ public class ChocoholicRestService {
 
     @GET
     @Produces(MediaType.TEXT_PLAIN)
-    @Path("/product/{id}")
+    @Path("{id}")
     public String getItemByID(@PathParam("id") String id) throws SQLException, ClassNotFoundException {
         Connection dbcon = DatabaseConnector.initializeDatabase();
         Item product = DatabaseUtils.retrieveItemByID(dbcon, id);

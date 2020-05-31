@@ -6,16 +6,16 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="TodoRestService" />
+        <module name="ChocoholicRestService" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="TodoRestService" target="8" />
+      <module name="ChocoholicRestService" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="TodoRestService" options="-endorseddirs &quot;C:\Users\Minh To\Desktop\INF-124-Project\Project4\REST\target/endorsed&quot;" />
+      <module name="ChocoholicRestService" options="-endorseddirs &quot;C:\Users\Minh To\Desktop\INF-124-Project\Project4\REST\target/endorsed&quot;" />
     </option>
   </component>
 </project>
