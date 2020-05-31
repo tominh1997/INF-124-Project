@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class TodoService {
-
+/*
 
     private final static String ALL_TODOS_QUERY = "SELECT * FROM TODOS";
 
@@ -126,4 +126,6 @@ public class TodoService {
 
         return updateStatus;
     }
+
+ */
 }

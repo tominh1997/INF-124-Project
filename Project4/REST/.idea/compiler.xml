@@ -10,7 +10,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="TodoRestService" target="1.7" />
+      <module name="TodoRestService" target="8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

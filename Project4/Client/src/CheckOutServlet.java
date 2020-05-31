@@ -4,6 +4,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -11,6 +15,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.HashMap;
 import java.text.DecimalFormat;
+import java.util.List;
+
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.glassfish.jersey.client.ClientConfig;
+import org.glassfish.jersey.media.multipart.FormDataMultiPart;
+
 @WebServlet(name="CheckOutServlet", urlPatterns = {"/checkout"})
 public class CheckOutServlet extends HttpServlet {
     private static final long serialVersionUID = 2L;
@@ -35,57 +46,45 @@ public class CheckOutServlet extends HttpServlet {
         String card = request.getParameter("cardnum");
         String cvv = request.getParameter("cvv");
 
-        float item_subtotal =0;
-        int order_number = 0;
-        float total_before_tax =0;
-        float grand_total =0;
+
         try{
-            Connection dbcon = DBConnection.initializeDatabase();
             HttpSession session = request.getSession();
             HashMap<String, Item> cart = (HashMap<String, Item>)session.getAttribute("cart");
-            String query = "SELECT * FROM chocoholic_db.tax_rates WHERE ZipCode=?";
-            PreparedStatement statement1 = dbcon.prepareStatement(query);
-            statement1.setInt(1, Integer.parseInt(zipCode));
-            ResultSet rs = statement1.executeQuery();
-            rs.next();
-            double tax = rs.getDouble("CombinedRate");
-            String query1 = "INSERT INTO orders VALUES (NULL, ? , ? , ?, ? , ?, ? , ?, ? , ?, ? )";
-            for(Item it : cart.values()){
-                PreparedStatement statement = dbcon.prepareStatement(query1);
-                statement.setString(1,name);
-                statement.setString(2, phone);
-                statement.setInt(3,Integer.valueOf(it.id));
-                statement.setString(4, it.name);
-                statement.setInt(5,it.quantity);
-                statement.setDouble(6, it.quantity * it.price * Double.valueOf(tax) );
-                item_subtotal += (it.quantity * it.price);
 
-                statement.setString(7,address + " " + city + " " + state + " " + country + " " + zipCode);
-                statement.setInt(8,Integer.valueOf(shipping));
-                statement.setString(9,card);
-                statement.setInt(10, Integer.valueOf(cvv));
+            ClientConfig config = new ClientConfig();
 
-                order_number = statement.executeUpdate();
-                statement.close();
+            Client client = ClientBuilder.newClient(config);
 
-            }
-            statement1.close();
-            rs.close();
-            dbcon.close();
+            WebTarget target = client.target(BaseURI.getBaseURI());
+
+            FormDataMultiPart part = new FormDataMultiPart();
+            //part.field;
+
+
+            String jsonResponse =
+                    target.path("v1").path("api").path("chocoholic").
+                            request(). //send a request
+                            accept(MediaType.APPLICATION_JSON). //specify the media type of the response
+                            post(String.class , ); // use the get method and return the response as a string
+
+            System.out.println(jsonResponse);
+
+            ObjectMapper objectMapper = new ObjectMapper(); // This object is from the jackson library
+
+
+            HashMap<String, String> responseValue = objectMapper.readValue(jsonResponse, new TypeReference< HashMap<String, String> >(){});
+
+
             request.setAttribute("name", name);
             request.setAttribute("shipping", shipping);
-            request.setAttribute("tax", tax);
-            request.setAttribute("item_subtotal", df2.format(item_subtotal));
-            request.setAttribute("order_number", order_number);
-            request.setAttribute("shipping", shipping);
-            total_before_tax = (float) (item_subtotal + Float.valueOf(shipping));
-            grand_total = (float) (total_before_tax * tax/100.0 + total_before_tax);
-            request.setAttribute("total_before_tax", df2.format(total_before_tax));
-            request.setAttribute("grand_total", df2.format(grand_total));
-
-
-
+            request.setAttribute("tax", responseValue.get("tax"));
+            request.setAttribute("item_subtotal", responseValue.get("item_subtotal"));
+            request.setAttribute("order_number", responseValue.get("order_number"));
+            request.setAttribute("total_before_tax", responseValue.get("total_before_tax"));
+            request.setAttribute("grand_total", responseValue.get("grand_total"));
             request.setAttribute("cart_items", cart);
+
+
             request.getRequestDispatcher("/confirmation.jsp").forward(request, response);
 
         } catch(Exception e) {
