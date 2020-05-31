@@ -1,7 +1,6 @@
-package com.uci.todorestservice;
+package com.uci.chocoholic;
 
-import com.uci.todorestservice.model.Todo;
-import com.uci.todorestservice.service.TodoService;
+import com.uci.chocoholic.service.TodoService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;

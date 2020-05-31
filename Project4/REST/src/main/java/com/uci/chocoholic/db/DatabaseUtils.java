@@ -1,4 +1,4 @@
-package com.uci.todorestservice.db;
+package com.uci.chocoholic.db;
 
 import java.sql.*;
 

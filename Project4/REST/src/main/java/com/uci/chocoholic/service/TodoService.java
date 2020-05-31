@@ -1,8 +1,7 @@
-package com.uci.todorestservice.service;
+package com.uci.chocoholic.service;
 
-import com.uci.todorestservice.db.DatabaseConnector;
-import com.uci.todorestservice.db.DatabaseUtils;
-import com.uci.todorestservice.model.Todo;
+import com.uci.chocoholic.db.DatabaseConnector;
+import com.uci.chocoholic.db.DatabaseUtils;
 
 import java.sql.Connection;
 import java.sql.ResultSet;

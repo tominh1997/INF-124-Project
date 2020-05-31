@@ -1,0 +1,14 @@
+<component name="ArtifactManager">
+  <artifact type="war" name="chocoholic:war">
+    <output-path>$PROJECT_DIR$/target</output-path>
+    <properties id="maven-jee-properties">
+      <options>
+        <module>chocoholic</module>
+        <packaging>war</packaging>
+      </options>
+    </properties>
+    <root id="archive" name="chocoholic.war">
+      <element id="artifact" artifact-name="chocoholic:war exploded" />
+    </root>
+  </artifact>
+</component>
