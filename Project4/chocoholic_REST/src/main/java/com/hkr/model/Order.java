@@ -1,10 +1,22 @@
 package com.hkr.model;
 
+import java.util.HashMap;
+
 public class Order {
     String name, phone, address, city, state, country, zipcode, shipping, card, cvv;
+    HashMap<String, Item> cart;
     public Order(){
 
     }
+
+    public HashMap<String, Item> getCart() {
+        return cart;
+    }
+
+    public void setCart(HashMap<String, Item> cart) {
+        this.cart = cart;
+    }
+
     public String getName() {
         return name;
     }
