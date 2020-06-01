@@ -29,7 +29,6 @@ public class ProductDescriptionServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
 		try {
-			Item product = new Item();
 			ClientConfig config = new ClientConfig();
 			Client client = ClientBuilder.newClient(config);
 			WebTarget target = client.target(BaseURI.getBaseURI());
@@ -39,7 +38,7 @@ public class ProductDescriptionServlet extends HttpServlet {
 							accept(MediaType.APPLICATION_JSON). //specify the media type of the response
 							get(String.class); // use the get method and return the response as a string
 			ObjectMapper objectMapper = new ObjectMapper();
-			Item todo = objectMapper.readValue(jsonResponse, Item.class);
+			Item product = objectMapper.readValue(jsonResponse, Item.class);
 			System.out.println(jsonResponse);
 			request.setAttribute("product", product);
 			request.getRequestDispatcher("/recentVisit").include(request, response);
