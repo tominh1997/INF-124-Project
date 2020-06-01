@@ -5,6 +5,6 @@ public  class BaseURI {
     public static URI getBaseURI() {
 
         //Change the URL here to make the client point to your service.
-        return UriBuilder.fromUri("http://localhost:8080/TodoRestService").build();
+        return UriBuilder.fromUri("http://localhost:8080/chocoholic").build();
     }
 }
