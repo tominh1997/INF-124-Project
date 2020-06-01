@@ -21,13 +21,6 @@ import static javax.ws.rs.core.MediaType.TEXT_PLAIN;
 
 public class ChocoholicRestService{
     @GET
-    @Produces(TEXT_PLAIN)
-    public String getMessage(){
-        return "Hello";
-    }
-
-
-    @GET
     @Produces(MediaType.APPLICATION_JSON)
     @Path("/products/{type}")
     public Response getItemsByType(@PathParam("type") String type) throws SQLException, ClassNotFoundException {
