@@ -6,7 +6,6 @@ import com.hkr.db.DatabaseConnector;
 import com.hkr.db.DatabaseUtils;
 import com.hkr.model.Item;
 import com.hkr.model.Order;
-import com.hkr.service.CheckOutService;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -52,7 +51,12 @@ public class ChocoholicRestService{
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("/checkout")
-    public Response getItemByID(Order order){
+    public Response getConfirmation(Order order) throws SQLException, ClassNotFoundException {
+        Connection dbcon = DatabaseConnector.initializeDatabase();
+        HashMap<String, String> response = DatabaseUtils.AddOrder(dbcon, order);
+        if (response.isEmpty()){
+            return Response.status(Response.Status.FORBIDDEN).build();
+        }
         return Response.ok().build();
     }
 
