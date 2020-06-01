@@ -5,6 +5,7 @@ import com.google.gson.Gson;
 import com.hkr.db.DatabaseConnector;
 import com.hkr.db.DatabaseUtils;
 import com.hkr.model.Item;
+import com.hkr.model.Order;
 import com.hkr.service.CheckOutService;
 
 import javax.ws.rs.*;
@@ -46,6 +47,13 @@ public class ChocoholicRestService{
         }
         Gson gson = new Gson();
         return Response.ok(gson.toJson(product)).build();
+    }
+
+    @POST
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("/checkout")
+    public Response getItemByID(Order order){
+        return Response.ok().build();
     }
 
 }

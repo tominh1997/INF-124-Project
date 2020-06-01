@@ -24,7 +24,11 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e785c18d-67be-4305-bd1a-182bcec80597" name="Default Changelist" comment="" />
+    <list default="true" id="e785c18d-67be-4305-bd1a-182bcec80597" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/hkr/model/Order.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/hkr/ChocoholicRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hkr/ChocoholicRestService.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -257,6 +261,10 @@
     </state>
     <state x="184" y="112" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1440.900@0.0.1440.900" timestamp="1590976551126" />
     <state x="196" y="104" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.834@0.0.1536.834" timestamp="1590994119588" />
+    <state x="574" y="101" key="#com.intellij.ide.util.MemberChooser" timestamp="1590998391743">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="574" y="101" key="#com.intellij.ide.util.MemberChooser/0.0.1536.834@0.0.1536.834" timestamp="1590998391743" />
     <state x="336" y="146" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog" timestamp="1590974467320">
       <screen x="0" y="0" width="1440" height="900" />
     </state>
