@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.ws.rs.client.Client;
 import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
 import javax.ws.rs.core.MediaType;
 
@@ -66,20 +67,14 @@ public class CheckOutServlet extends HttpServlet {
 
             WebTarget target = client.target(BaseURI.getBaseURI());
 
-            FormDataMultiPart part = new FormDataMultiPart();
-            //part.field;
-
-
+            ObjectMapper objectMapper = new ObjectMapper(); // This object is from the jackson library
+//            String orderJson = objectMapper.writeValueAsString(order);
             String jsonResponse =
                     target.path("chocoholic").path("checkout").
                             request(). //send a request
                             accept(MediaType.APPLICATION_JSON). //specify the media type of the response
-                            post(); // use the get method and return the response as a string
-
+                            post(Entity.json(order),String.class); // use the get method and return the response as a string
             System.out.println(jsonResponse);
-
-            ObjectMapper objectMapper = new ObjectMapper(); // This object is from the jackson library
-
 
             HashMap<String, String> responseValue = objectMapper.readValue(jsonResponse, new TypeReference< HashMap<String, String> >(){});
 

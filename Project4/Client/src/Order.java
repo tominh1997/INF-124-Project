@@ -1,5 +1,6 @@
+import javax.persistence.Entity;
 import java.util.HashMap;
-
+@Entity
 public class Order {
     String name, phone, address, city, state, country, zipcode, shipping, card, cvv;
     HashMap<String, Item> cart;
