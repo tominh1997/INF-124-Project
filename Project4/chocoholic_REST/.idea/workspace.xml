@@ -25,11 +25,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="e785c18d-67be-4305-bd1a-182bcec80597" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/artifacts/chocoholic_REST_war_exploded.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/artifacts/chocoholic_REST_war_exploded.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/BaseURI.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/BaseURI.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/CheckOutServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/CheckOutServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/ProductDescriptionServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/ProductDescriptionServlet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Client/src/ProductsServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Client/src/ProductsServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hkr/ChocoholicRestService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/hkr/ChocoholicRestService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/hkr/HelloWorld.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/hkr/ChocoholicRestService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/hkr/ChocoholicRestService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -267,6 +267,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="336" y="146" key="#com.intellij.ide.util.frameworkSupport.AddFrameworkSupportDialog/0.0.1440.900@0.0.1440.900" timestamp="1590974467320" />
+    <state x="549" y="118" key="FileChooserDialogImpl" timestamp="1590994362181">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="549" y="118" key="FileChooserDialogImpl/0.0.1536.834@0.0.1536.834" timestamp="1590994362181" />
     <state width="1164" height="213" key="GridCell.Tab.0.bottom" timestamp="1590994219695">
       <screen x="0" y="0" width="1536" height="834" />
     </state>
@@ -331,6 +335,10 @@
       <screen x="0" y="0" width="1440" height="900" />
     </state>
     <state x="258" y="112" key="Maven.ArtifactSearchDialog/0.0.1440.900@0.0.1440.900" timestamp="1590977927837" />
+    <state x="439" y="121" key="NewModule_or_Project.wizard" timestamp="1590994375905">
+      <screen x="0" y="0" width="1536" height="834" />
+    </state>
+    <state x="439" y="121" key="NewModule_or_Project.wizard/0.0.1536.834@0.0.1536.834" timestamp="1590994375905" />
     <state x="236" y="0" width="1083" height="837" key="SettingsEditor" timestamp="1590994125866">
       <screen x="0" y="0" width="1536" height="834" />
     </state>

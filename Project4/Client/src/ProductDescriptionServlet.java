@@ -1,8 +1,15 @@
+import com.fasterxml.jackson.databind.ObjectMapper;
+import org.glassfish.jersey.client.ClientConfig;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.ws.rs.client.Client;
+import javax.ws.rs.client.ClientBuilder;
+import javax.ws.rs.client.WebTarget;
+import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -22,34 +29,18 @@ public class ProductDescriptionServlet extends HttpServlet {
 			throws ServletException, IOException {
 		String id = request.getParameter("id");
 		try {
-			// Get a connection from dataSource
-			Connection dbcon = DBConnection.initializeDatabase();
-
-			// Construct a query with parameter represented by "?"
-			String query = "SELECT * from chocoholic_db.products where id = ?";
-
-			// Declare our statement
-			PreparedStatement statement = dbcon.prepareStatement(query);
-			// Set the parameter represented by "?" in the query to the id we get from url,
-			// num 1 indicates the first "?" in the query
-			statement.setInt(1, Integer.parseInt(id));
-			// Perform the query
-			ResultSet rs = statement.executeQuery();
-			// Iterate through each row of rs
-			rs.next();
 			Item product = new Item();
-			product.setName(rs.getString("name"));
-			product.setId(rs.getString("id"));
-			product.setDescription(rs.getString("description"));
-			product.setType("type");
-			product.setPrice(Double.parseDouble(df2.format(rs.getDouble("price"))));
-			product.setImage1(product.convertToBase64(rs.getBlob("image1")));
-			product.setImage2(product.convertToBase64(rs.getBlob("image2")));
-			product.setImage3(product.convertToBase64(rs.getBlob("image3")));
-			//Set attribute to use variable in jsp
-			rs.close();
-			statement.close();
-			dbcon.close();
+			ClientConfig config = new ClientConfig();
+			Client client = ClientBuilder.newClient(config);
+			WebTarget target = client.target(BaseURI.getBaseURI());
+			String jsonResponse =
+					target.path("chocoholic").path("products").path("product").path(id).
+							request(). //send a request
+							accept(MediaType.APPLICATION_JSON). //specify the media type of the response
+							get(String.class); // use the get method and return the response as a string
+			ObjectMapper objectMapper = new ObjectMapper();
+			Item todo = objectMapper.readValue(jsonResponse, Item.class);
+			System.out.println(jsonResponse);
 			request.setAttribute("product", product);
 			request.getRequestDispatcher("/recentVisit").include(request, response);
 			request.getRequestDispatcher("/productDescription.jsp").forward(request, response);
