@@ -12,36 +12,32 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-@Path("/chocoholic")
-public class ChocoholicRestService {
+@Path("chocoholic")
+
+public class ChocoholicRestService{
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Path("/products/{type}")
-    public String getItemsByType(@PathParam("type") String type) throws SQLException, ClassNotFoundException {
+    public Response getItemsByType(@PathParam("type") String type) throws SQLException, ClassNotFoundException {
         Connection dbcon = DatabaseConnector.initializeDatabase();
         ArrayList<Item> products = DatabaseUtils.retrieveItemsByType(dbcon, type);
-        String productNames = "";
-        for (Item item: products){
-            productNames += item.getName() + "\n";
+        System.out.print(products.toString());
+        if (products.size() == 0) {
+            return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return productNames;
-//        if (products.size() == 0) {
-//            return Response.status(Response.Status.NOT_FOUND).build();
-//        }
-//        return Response.ok(products).build();
+        return Response.ok(products).build();
     }
 
     @GET
-    @Produces(MediaType.TEXT_PLAIN)
-    @Path("{id}")
-    public String getItemByID(@PathParam("id") String id) throws SQLException, ClassNotFoundException {
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/products/product/{id}")
+    public Response getItemByID(@PathParam("id") String id) throws SQLException, ClassNotFoundException {
         Connection dbcon = DatabaseConnector.initializeDatabase();
         Item product = DatabaseUtils.retrieveItemByID(dbcon, id);
-        return product.getName();
-//        if (product == null) {
-//            return Response.status(Response.Status.NOT_FOUND).build();
-//        }
-//        return Response.ok(product).build();
+        if (product == null) {
+            return Response.status(Response.Status.NOT_FOUND).build();
+        }
+        return Response.ok(product).build();
     }
 
     @POST

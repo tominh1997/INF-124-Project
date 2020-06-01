@@ -14,7 +14,7 @@ import java.util.ArrayList;
 public class DatabaseUtils {
 
     private static DecimalFormat df2 = new DecimalFormat("#.##");
-    public static ArrayList<Item> retrieveItemsByType(Connection connection, final String type) {
+    public static ArrayList<Item> retrieveItemsByType(Connection connection, String type) {
         ArrayList<Item> products = new ArrayList<Item>();
         try {
             String query = "SELECT * from chocoholic_db.products where type = ?";
@@ -45,7 +45,7 @@ public class DatabaseUtils {
         return products;
     }
 
-    public static Item retrieveItemByID(Connection connection, final String id) {
+    public static Item retrieveItemByID(Connection connection, String id) {
         Item product = new Item();
         try {
             String query = "SELECT * from chocoholic_db.products where id = ?";
