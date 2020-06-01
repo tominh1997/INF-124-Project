@@ -62,10 +62,10 @@ public class CheckOutServlet extends HttpServlet {
 
 
             String jsonResponse =
-                    target.path("v1").path("api").path("chocoholic").
+                    target.path("chocoholic").path("checkout").
                             request(). //send a request
                             accept(MediaType.APPLICATION_JSON). //specify the media type of the response
-                            post(String.class); // use the get method and return the response as a string
+                            post(); // use the get method and return the response as a string
 
             System.out.println(jsonResponse);
 
