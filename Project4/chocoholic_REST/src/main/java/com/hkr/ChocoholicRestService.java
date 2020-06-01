@@ -50,6 +50,7 @@ public class ChocoholicRestService{
 
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.APPLICATION_JSON )
     @Path("/checkout")
     public Response getConfirmation(Order order) throws SQLException, ClassNotFoundException {
         Connection dbcon = DatabaseConnector.initializeDatabase();
