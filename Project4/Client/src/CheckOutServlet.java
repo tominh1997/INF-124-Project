@@ -45,12 +45,21 @@ public class CheckOutServlet extends HttpServlet {
         String shipping = request.getParameter("shipping method");
         String card = request.getParameter("cardnum");
         String cvv = request.getParameter("cvv");
-
-
+        Order order = new Order();
+        order.setName(name);
+        order.setPhone(phone);
+        order.setAddress(address);
+        order.setCity(city);
+        order.setState(state);
+        order.setCountry(country);
+        order.setZipcode(zipCode);
+        order.setShipping(shipping);
+        order.setCard(card);
+        order.setCvv(cvv);
         try{
             HttpSession session = request.getSession();
             HashMap<String, Item> cart = (HashMap<String, Item>)session.getAttribute("cart");
-
+            order.setCart(cart);
             ClientConfig config = new ClientConfig();
 
             Client client = ClientBuilder.newClient(config);

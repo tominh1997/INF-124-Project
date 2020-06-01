@@ -3,6 +3,7 @@ package com.hkr.service;
 
 import com.hkr.db.DatabaseConnector;
 import com.hkr.model.Item;
+import com.hkr.model.Order;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -13,17 +14,18 @@ import java.util.HashMap;
 
 public class CheckOutService {
 
-    public static HashMap<String, String> AddOrder(String name,
-                                   String phone,
-                                   String address,
-                                   String city,
-                                   String state,
-                                   String country,
-                                   String zipCode,
-                                   String shipping,
-                                   String card,
-                                   String cvv,
-                                   HashMap<String, Item> cart) {
+    public static HashMap<String, String> AddOrder(Order order) {
+        String name = order.getName();
+        String phone = order.getPhone();
+        String address = order.getAddress();
+        String city = order.getCity();
+        String state = order.getState();
+        String country = order.getCountry();
+        String zipCode = order.getZipcode();
+        String shipping = order.getShipping();
+        String card = order.getCard();
+        String cvv = order.getCvv();
+        HashMap<String, Item> cart = order.getCart();
         HashMap<String, String> response =  new HashMap<>();
         float item_subtotal =0;
         int order_number = 0;
