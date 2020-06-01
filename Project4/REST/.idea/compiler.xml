@@ -15,7 +15,7 @@
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
-      <module name="ChocoholicRestService" options="-endorseddirs &quot;C:\Users\Minh To\Desktop\INF-124-Project\Project4\REST\target/endorsed&quot;" />
+      <module name="ChocoholicRestService" options="-endorseddirs $PROJECT_DIR$/target/endorsed" />
     </option>
   </component>
 </project>
