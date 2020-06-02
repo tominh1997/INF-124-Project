@@ -109,7 +109,8 @@ public class DatabaseUtils {
                 statement.setInt(3, Integer.valueOf(it.getId()));
                 statement.setString(4, it.getName());
                 statement.setInt(5, it.getQuantity());
-                statement.setDouble(6, it.getQuantity() * it.getPrice() * Double.valueOf(tax));
+                statement.setDouble(6, (it.getQuantity() * it.getPrice()) +
+                        (it.getQuantity() * it.getPrice()) * (Double.valueOf(tax) / 100) + Integer.valueOf(shipping));
                 item_subtotal += (it.getQuantity() * it.getPrice());
 
                 statement.setString(7, address + " " + city + " " + state + " " + country + " " + zipCode);
