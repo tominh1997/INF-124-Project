@@ -33,6 +33,7 @@ public class ChocoholicRestService{
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         Gson gson = new Gson();
+        System.out.println(gson.toJson(products));
         return Response.ok(gson.toJson(products)).build();
     }
 
@@ -46,6 +47,7 @@ public class ChocoholicRestService{
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         Gson gson = new Gson();
+        System.out.println(gson.toJson(product));
         return Response.ok(gson.toJson(product)).build();
     }
 
