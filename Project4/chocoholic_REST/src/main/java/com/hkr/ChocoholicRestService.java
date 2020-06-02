@@ -2,6 +2,7 @@ package com.hkr;
 
 
 import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.hkr.db.DatabaseConnector;
 import com.hkr.db.DatabaseUtils;
 import com.hkr.model.Item;
@@ -52,13 +53,19 @@ public class ChocoholicRestService{
     @Consumes(MediaType.APPLICATION_JSON)
     @Produces(MediaType.APPLICATION_JSON )
     @Path("/checkout")
-    public Response getConfirmation(Order order) throws SQLException, ClassNotFoundException {
+    public Response getConfirmation(String order) throws SQLException, ClassNotFoundException {
+        System.out.println(order);
+        GsonBuilder builder = new GsonBuilder();
+        Gson gson = builder.create();
+        Order order1 = gson.fromJson(order, Order.class);
+        System.out.println(order1.getCart());
         Connection dbcon = DatabaseConnector.initializeDatabase();
-        HashMap<String, String> response = DatabaseUtils.AddOrder(dbcon, order);
+        HashMap<String, String> response = DatabaseUtils.AddOrder(dbcon, order1);
         if (response.isEmpty()){
             return Response.status(Response.Status.FORBIDDEN).build();
         }
-        return Response.ok().build();
+        System.out.println(gson.toJson(response));
+        return Response.ok(gson.toJson(response)).build();
     }
 
 }
